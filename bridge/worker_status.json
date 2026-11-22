@@ -1,0 +1,12 @@
+{
+  "state": "IDLE",
+  "timestamp": "2026-11-22T09:07:25.424767+00:00",
+  "python_version": "3.13.16",
+  "torch_version": "2.14.1+cu130",
+  "cuda_available": true,
+  "gpu_name": "NVIDIA L4",
+  "project_dir": "/content/drive/Othercomputers/Dizu\u0308stu\u0308 Bilgisayar\u0131m/Speech-Enhancement",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "current_job_id": "job_026_phase4_full_evaluation",
+  "last_completed_job_id": "job_026_phase4_full_evaluation"
+}

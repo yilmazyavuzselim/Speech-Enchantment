@@ -1,0 +1,233 @@
+{
+  "status": "VALIDATED",
+  "sample_rate_hz": 16000,
+  "splits": {
+    "train": {
+      "num_utterances": 10802,
+      "total_duration_sec": 31529.04,
+      "total_duration_hours": 8.758,
+      "num_speakers": 26,
+      "speakers": [
+        "p227",
+        "p228",
+        "p230",
+        "p231",
+        "p233",
+        "p236",
+        "p239",
+        "p243",
+        "p244",
+        "p250",
+        "p254",
+        "p256",
+        "p258",
+        "p259",
+        "p267",
+        "p268",
+        "p269",
+        "p270",
+        "p273",
+        "p274",
+        "p276",
+        "p277",
+        "p278",
+        "p279",
+        "p282",
+        "p286"
+      ],
+      "speaker_utterance_counts": {
+        "p227": 389,
+        "p228": 361,
+        "p230": 392,
+        "p231": 450,
+        "p233": 372,
+        "p236": 486,
+        "p239": 499,
+        "p243": 390,
+        "p244": 413,
+        "p250": 480,
+        "p254": 379,
+        "p256": 319,
+        "p258": 406,
+        "p259": 475,
+        "p267": 409,
+        "p268": 406,
+        "p269": 394,
+        "p270": 451,
+        "p273": 427,
+        "p274": 456,
+        "p276": 450,
+        "p277": 423,
+        "p278": 407,
+        "p279": 400,
+        "p282": 313,
+        "p286": 455
+      },
+      "speaker_duration_minutes": {
+        "p227": 19.52,
+        "p228": 19.98,
+        "p230": 20.81,
+        "p231": 18.33,
+        "p233": 18.6,
+        "p236": 21.24,
+        "p239": 23.16,
+        "p243": 22.54,
+        "p244": 18.8,
+        "p250": 20.0,
+        "p254": 17.17,
+        "p256": 18.05,
+        "p258": 18.65,
+        "p259": 23.59,
+        "p267": 18.33,
+        "p268": 22.45,
+        "p269": 18.6,
+        "p270": 22.64,
+        "p273": 19.34,
+        "p274": 24.17,
+        "p276": 23.42,
+        "p277": 20.85,
+        "p278": 19.93,
+        "p279": 17.33,
+        "p282": 15.82,
+        "p286": 22.15
+      },
+      "noise_types": {
+        "babble": 1080,
+        "cafeteria": 1078,
+        "car": 1080,
+        "kitchen": 1076,
+        "meeting": 1078,
+        "metro": 1082,
+        "restaurant": 1080,
+        "ssn": 1092,
+        "station": 1078,
+        "traffic": 1078
+      },
+      "snr_db_distribution": {
+        "0.0": 2700,
+        "5.0": 2694,
+        "10.0": 2708,
+        "15.0": 2700
+      },
+      "min_duration_sec": 1.092,
+      "max_duration_sec": 15.112,
+      "mean_duration_sec": 2.919
+    },
+    "val": {
+      "num_utterances": 770,
+      "total_duration_sec": 2279.59,
+      "total_duration_hours": 0.633,
+      "num_speakers": 2,
+      "speakers": [
+        "p226",
+        "p287"
+      ],
+      "speaker_utterance_counts": {
+        "p226": 353,
+        "p287": 417
+      },
+      "speaker_duration_minutes": {
+        "p226": 19.12,
+        "p287": 18.87
+      },
+      "noise_types": {
+        "babble": 78,
+        "cafeteria": 78,
+        "car": 79,
+        "kitchen": 76,
+        "meeting": 77,
+        "metro": 77,
+        "restaurant": 77,
+        "ssn": 76,
+        "station": 78,
+        "traffic": 74
+      },
+      "snr_db_distribution": {
+        "0.0": 193,
+        "5.0": 193,
+        "10.0": 191,
+        "15.0": 193
+      },
+      "min_duration_sec": 1.357,
+      "max_duration_sec": 11.781,
+      "mean_duration_sec": 2.961
+    },
+    "test": {
+      "num_utterances": 824,
+      "total_duration_sec": 2072.05,
+      "total_duration_hours": 0.576,
+      "num_speakers": 2,
+      "speakers": [
+        "p232",
+        "p257"
+      ],
+      "speaker_utterance_counts": {
+        "p232": 393,
+        "p257": 431
+      },
+      "speaker_duration_minutes": {
+        "p232": 16.74,
+        "p257": 17.8
+      },
+      "noise_types": {
+        "bus": 164,
+        "cafe": 164,
+        "living": 166,
+        "office": 164,
+        "psquare": 166
+      },
+      "snr_db_distribution": {
+        "2.5": 207,
+        "7.5": 206,
+        "12.5": 207,
+        "17.5": 204
+      },
+      "min_duration_sec": 1.238,
+      "max_duration_sec": 9.769,
+      "mean_duration_sec": 2.515
+    },
+    "all": {
+      "total_utterances": 12396,
+      "total_duration_hours": 9.967
+    }
+  },
+  "speaker_isolation_check": {
+    "train_val_speakers": [
+      "p226",
+      "p227",
+      "p228",
+      "p230",
+      "p231",
+      "p233",
+      "p236",
+      "p239",
+      "p243",
+      "p244",
+      "p250",
+      "p254",
+      "p256",
+      "p258",
+      "p259",
+      "p267",
+      "p268",
+      "p269",
+      "p270",
+      "p273",
+      "p274",
+      "p276",
+      "p277",
+      "p278",
+      "p279",
+      "p282",
+      "p286",
+      "p287"
+    ],
+    "test_speakers": [
+      "p232",
+      "p257"
+    ],
+    "overlap": [],
+    "is_disjoint": true
+  },
+  "anomalies_detected": []
+}

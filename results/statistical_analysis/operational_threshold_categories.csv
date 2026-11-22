@@ -1,0 +1,21 @@
+metric,regime,tau_mod_subst,category,boundary_definition,count,percentage
+PESQ_wb,Pooled_All_824,0.10 / 0.35,"1. Substantial Operational Improvement","d >= +0.3500",472,57.28
+PESQ_wb,Pooled_All_824,0.10 / 0.35,"2. Moderate Operational Improvement","+0.1000 <= d < +0.3500",227,27.55
+PESQ_wb,Pooled_All_824,0.10 / 0.35,"3. Operational Equivalence Zone (ROPE)","-0.1000 < d < +0.1000",78,9.47
+PESQ_wb,Pooled_All_824,0.10 / 0.35,"4. Moderate Operational Degradation","-0.3500 < d <= -0.1000",25,3.03
+PESQ_wb,Pooled_All_824,0.10 / 0.35,"5. Substantial Operational Degradation","d <= -0.3500",22,2.67
+STOI,Pooled_All_824,0.01 / 0.03,"1. Substantial Operational Improvement","d >= +0.0300",204,24.76
+STOI,Pooled_All_824,0.01 / 0.03,"2. Moderate Operational Improvement","+0.0100 <= d < +0.0300",184,22.33
+STOI,Pooled_All_824,0.01 / 0.03,"3. Operational Equivalence Zone (ROPE)","-0.0100 < d < +0.0100",396,48.06
+STOI,Pooled_All_824,0.01 / 0.03,"4. Moderate Operational Degradation","-0.0300 < d <= -0.0100",32,3.88
+STOI,Pooled_All_824,0.01 / 0.03,"5. Substantial Operational Degradation","d <= -0.0300",8,0.97
+STOI,Low_SNR_2.5_7.5dB_413,0.02 / 0.04,"1. Substantial Operational Improvement","d >= +0.0400",102,24.7
+STOI,Low_SNR_2.5_7.5dB_413,0.02 / 0.04,"2. Moderate Operational Improvement","+0.0200 <= d < +0.0400",86,20.82
+STOI,Low_SNR_2.5_7.5dB_413,0.02 / 0.04,"3. Operational Equivalence Zone (ROPE)","-0.0200 < d < +0.0200",214,51.82
+STOI,Low_SNR_2.5_7.5dB_413,0.02 / 0.04,"4. Moderate Operational Degradation","-0.0400 < d <= -0.0200",6,1.45
+STOI,Low_SNR_2.5_7.5dB_413,0.02 / 0.04,"5. Substantial Operational Degradation","d <= -0.0400",5,1.21
+STOI,High_SNR_12.5_17.5dB_411,0.005 / 0.015,"1. Substantial Operational Improvement","d >= +0.0150",103,25.06
+STOI,High_SNR_12.5_17.5dB_411,0.005 / 0.015,"2. Moderate Operational Improvement","+0.0050 <= d < +0.0150",83,20.19
+STOI,High_SNR_12.5_17.5dB_411,0.005 / 0.015,"3. Operational Equivalence Zone (ROPE)","-0.0050 < d < +0.0050",189,45.99
+STOI,High_SNR_12.5_17.5dB_411,0.005 / 0.015,"4. Moderate Operational Degradation","-0.0150 < d <= -0.0050",24,5.84
+STOI,High_SNR_12.5_17.5dB_411,0.005 / 0.015,"5. Substantial Operational Degradation","d <= -0.0150",12,2.92

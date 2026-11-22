@@ -1,0 +1,5 @@
+{
+  "job_id": "job_026_phase4_full_evaluation",
+  "action": "run",
+  "command": "python scripts/07_evaluate_and_report.py"
+}

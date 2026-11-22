@@ -1,0 +1,129 @@
+[INIT] OfficialTestEvaluator configured on device: cuda
+[INIT] Checkpoint path: /content/drive/MyDrive/Speech-Enhancement/checkpoints/best_val_pesq.th
+[INIT] Test manifest: manifests/test_manifest.json
+[INIT] Baseline CSV: results/test_baseline_per_utterance.csv
+[INIT] Output directory: results
+
+======================================================================
+STAGE 1: CONTROLLED PRE-EVALUATION PREFLIGHT CHECK
+======================================================================
+[CHECK 1/3] Loading checkpoint: /content/drive/MyDrive/Speech-Enhancement/checkpoints/best_val_pesq.th (226,478,148 bytes)...
+  Checkpoint Epoch: 14 (Expected: 14)
+  State Dict Keys: 48 (Expected: 48)
+  [PASSED] Checkpoint integrity and Demucs dns48 architecture verified.
+[CHECK 2/3] Verifying test dataset and Phase 3A baseline records...
+  [PASSED] Dataset (824 utts, p232: 393, p257: 431) and Baseline CSV (2472 rows) verified.
+[CHECK 3/3] Running 5-sample mini evaluation test...
+    Item 1/5 [p257_001]: PESQ=3.2885, STOI=0.9711
+    Item 2/5 [p257_002]: PESQ=3.0956, STOI=0.9887
+    Item 3/5 [p257_003]: PESQ=2.9929, STOI=0.9673
+    Item 4/5 [p257_004]: PESQ=2.8241, STOI=0.9745
+    Item 5/5 [p257_006]: PESQ=3.1035, STOI=0.9617
+  [PASSED] 5-sample mini evaluation succeeded with valid metrics.
+======================================================================
+ALL PREFLIGHT CHECKS PASSED — AUTHORIZED FOR FULL EVALUATION
+
+======================================================================
+STAGE 2: FULL 824-UTTERANCE EVALUATION (FINE-TUNED DEMUCS DNS48)
+======================================================================
+Running fine-tuned Demucs inference on cuda for all 824 utterances...
+Inference complete: 824 utterances in 15.67s (52.6 utts/sec).
+Computing Wideband PESQ and STOI across 8 CPU worker processes...
+  Processed 200/824 utterances (44.0 utts/sec)...
+  Processed 400/824 utterances (47.8 utts/sec)...
+  Processed 600/824 utterances (47.2 utts/sec)...
+  Processed 800/824 utterances (48.8 utts/sec)...
+  Processed 824/824 utterances (49.0 utts/sec)...
+Metric computation complete in 16.86s.
+Saving per-utterance results to results/test_finetuned_per_utterance.csv...
+Saved fine-tuned summary to results/test_finetuned_summary.json.
+
+======================================================================
+STAGE 3: UNIFIED 4-WAY COMPARATIVE ANALYSIS & BREAKDOWNS
+======================================================================
+
+--- OVERALL 4-WAY COMPARATIVE SUMMARY ---
+  noisy              | PESQ: 1.9719 ± 0.7532 (med: 1.7986) | STOI: 0.9211 ± 0.0709 (med: 0.9403) | dPESQ(noisy): +0.0000 | dPESQ(zs): -0.5484
+  spectral_gating    | PESQ: 1.4232 ± 0.2848 (med: 1.3502) | STOI: 0.8234 ± 0.0655 (med: 0.8320) | dPESQ(noisy): -0.5487 | dPESQ(zs): -1.0971
+  dns48_zeroshot     | PESQ: 2.5203 ± 0.6258 (med: 2.5263) | STOI: 0.9300 ± 0.0638 (med: 0.9476) | dPESQ(noisy): +0.5484 | dPESQ(zs): +0.0000
+  dns48_finetuned    | PESQ: 2.9180 ± 0.6483 (med: 3.0316) | STOI: 0.9480 ± 0.0507 (med: 0.9645) | dPESQ(noisy): +0.9461 | dPESQ(zs): +0.3977
+Saved overall comparison table to results/final_test_comparison.csv.
+
+--- BREAKDOWN BY SPEAKER ---
+  [p232] noisy              | PESQ: 2.1687 | STOI: 0.9270 | dPESQ(zs): -0.4847
+  [p232] spectral_gating    | PESQ: 1.3991 | STOI: 0.8334 | dPESQ(zs): -1.2543
+  [p232] dns48_zeroshot     | PESQ: 2.6535 | STOI: 0.9400 | dPESQ(zs): +0.0000
+  [p232] dns48_finetuned    | PESQ: 3.0351 | STOI: 0.9504 | dPESQ(zs): +0.3817
+  [p257] noisy              | PESQ: 1.7925 | STOI: 0.9157 | dPESQ(zs): -0.6064
+  [p257] spectral_gating    | PESQ: 1.4451 | STOI: 0.8143 | dPESQ(zs): -0.9538
+  [p257] dns48_zeroshot     | PESQ: 2.3989 | STOI: 0.9209 | dPESQ(zs): +0.0000
+  [p257] dns48_finetuned    | PESQ: 2.8112 | STOI: 0.9457 | dPESQ(zs): +0.4123
+Saved speaker breakdown to results/test_breakdown_by_speaker.csv.
+
+--- BREAKDOWN BY NOISE TYPE ---
+  [bus    ] noisy              | PESQ: 2.4845 | STOI: 0.9519 | dPESQ(zs): -0.3340
+  [bus    ] spectral_gating    | PESQ: 1.5220 | STOI: 0.8401 | dPESQ(zs): -1.2964
+  [bus    ] dns48_zeroshot     | PESQ: 2.8184 | STOI: 0.9488 | dPESQ(zs): +0.0000
+  [bus    ] dns48_finetuned    | PESQ: 3.2107 | STOI: 0.9635 | dPESQ(zs): +0.3922
+  [cafe   ] noisy              | PESQ: 1.4919 | STOI: 0.8768 | dPESQ(zs): -0.6262
+  [cafe   ] spectral_gating    | PESQ: 1.2904 | STOI: 0.7925 | dPESQ(zs): -0.8277
+  [cafe   ] dns48_zeroshot     | PESQ: 2.1181 | STOI: 0.9032 | dPESQ(zs): +0.0000
+  [cafe   ] dns48_finetuned    | PESQ: 2.4668 | STOI: 0.9256 | dPESQ(zs): +0.3487
+  [living ] noisy              | PESQ: 1.6178 | STOI: 0.9040 | dPESQ(zs): -0.6971
+  [living ] spectral_gating    | PESQ: 1.3628 | STOI: 0.8202 | dPESQ(zs): -0.9522
+  [living ] dns48_zeroshot     | PESQ: 2.3150 | STOI: 0.9218 | dPESQ(zs): +0.0000
+  [living ] dns48_finetuned    | PESQ: 2.6632 | STOI: 0.9411 | dPESQ(zs): +0.3482
+  [office ] noisy              | PESQ: 2.5361 | STOI: 0.9583 | dPESQ(zs): -0.3645
+  [office ] spectral_gating    | PESQ: 1.5682 | STOI: 0.8432 | dPESQ(zs): -1.3324
+  [office ] dns48_zeroshot     | PESQ: 2.9006 | STOI: 0.9498 | dPESQ(zs): +0.0000
+  [office ] dns48_finetuned    | PESQ: 3.4342 | STOI: 0.9667 | dPESQ(zs): +0.5337
+  [psquare] noisy              | PESQ: 1.7367 | STOI: 0.9145 | dPESQ(zs): -0.7160
+  [psquare] spectral_gating    | PESQ: 1.3738 | STOI: 0.8211 | dPESQ(zs): -1.0789
+  [psquare] dns48_zeroshot     | PESQ: 2.4527 | STOI: 0.9266 | dPESQ(zs): +0.0000
+  [psquare] dns48_finetuned    | PESQ: 2.8194 | STOI: 0.9430 | dPESQ(zs): +0.3666
+Saved noise breakdown to results/test_breakdown_by_noise.csv.
+
+--- BREAKDOWN BY SNR LEVEL ---
+  [ 2.5 dB] noisy              | PESQ: 1.4232 | STOI: 0.8683 | dPESQ(zs): -0.5628
+  [ 2.5 dB] spectral_gating    | PESQ: 1.2810 | STOI: 0.7860 | dPESQ(zs): -0.7050
+  [ 2.5 dB] dns48_zeroshot     | PESQ: 1.9860 | STOI: 0.8907 | dPESQ(zs): +0.0000
+  [ 2.5 dB] dns48_finetuned    | PESQ: 2.4203 | STOI: 0.9190 | dPESQ(zs): +0.4343
+  [ 7.5 dB] noisy              | PESQ: 1.7651 | STOI: 0.9188 | dPESQ(zs): -0.6123
+  [ 7.5 dB] spectral_gating    | PESQ: 1.3968 | STOI: 0.8267 | dPESQ(zs): -0.9806
+  [ 7.5 dB] dns48_zeroshot     | PESQ: 2.3774 | STOI: 0.9260 | dPESQ(zs): +0.0000
+  [ 7.5 dB] dns48_finetuned    | PESQ: 2.8218 | STOI: 0.9474 | dPESQ(zs): +0.4444
+  [12.5 dB] noisy              | PESQ: 2.1041 | STOI: 0.9403 | dPESQ(zs): -0.5558
+  [12.5 dB] spectral_gating    | PESQ: 1.4446 | STOI: 0.8351 | dPESQ(zs): -1.2152
+  [12.5 dB] dns48_zeroshot     | PESQ: 2.6599 | STOI: 0.9444 | dPESQ(zs): +0.0000
+  [12.5 dB] dns48_finetuned    | PESQ: 3.0631 | STOI: 0.9582 | dPESQ(zs): +0.4032
+  [17.5 dB] noisy              | PESQ: 2.6035 | STOI: 0.9574 | dPESQ(zs): -0.4616
+  [17.5 dB] spectral_gating    | PESQ: 1.5722 | STOI: 0.8462 | dPESQ(zs): -1.4928
+  [17.5 dB] dns48_zeroshot     | PESQ: 3.0651 | STOI: 0.9594 | dPESQ(zs): +0.0000
+  [17.5 dB] dns48_finetuned    | PESQ: 3.3728 | STOI: 0.9674 | dPESQ(zs): +0.3078
+Saved SNR breakdown to results/test_breakdown_by_snr.csv.
+
+--- UTTERANCE-LEVEL DIAGNOSTIC ANALYSIS ---
+  Utterances with PESQ improvement over Zero-Shot: 748/824 (90.8%)
+  Utterances without PESQ improvement over Zero-Shot: 76/824 (9.2%)
+  Utterances with PESQ improvement over Noisy: 810/824 (98.3%)
+  PESQ improved but STOI reduced vs Zero-Shot: 122/824 (14.8%)
+  PESQ improved but STOI reduced vs Noisy: 78/824 (9.5%)
+
+  [NOTE: Smoke-Test Utterance p232_001]
+  Metadata: speaker=p232, noise=bus, snr=17.5 dB
+  Scores: Noisy PESQ=2.9238, Spectral Gating PESQ=1.6644, Zero-Shot PESQ=3.0293, Fine-Tuned PESQ=3.1112
+
+--- EXPORTING REPRESENTATIVE AUDIO EXAMPLES ---
+  Exported 5-audio set for p232_023 [p232, psquare, 2.5 dB]: Noisy=1.3108 -> ZS=2.2626 -> FT=2.5008
+  Exported 5-audio set for p257_008 [p257, cafe, 7.5 dB]: Noisy=1.2496 -> ZS=1.9051 -> FT=2.2039
+  Exported 5-audio set for p232_012 [p232, living, 12.5 dB]: Noisy=2.053 -> ZS=2.7081 -> FT=3.1346
+  Exported 5-audio set for p257_014 [p257, office, 17.5 dB]: Noisy=3.3299 -> ZS=3.4156 -> FT=3.7012
+
+--- GENERATING PUBLICATION FIGURE ---
+Saved publication comparison figure to results/final_test_comparison.png.
+Saved comprehensive summary JSON to results/final_test_comparison.json.
+Copied all Phase 4 result artifacts to persistent Drive: /content/drive/MyDrive/Speech-Enhancement/results
+
+======================================================================
+PHASE 4 OFFICIAL TEST-SET EVALUATION COMPLETED SUCCESSFULLY!
+======================================================================

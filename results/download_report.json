@@ -1,0 +1,80 @@
+{
+  "status": "SUCCESS",
+  "target_dir": "/content/drive/MyDrive/Speech-Enhancement/data/raw_48k_zips",
+  "total_files": 8,
+  "total_bytes": 5648236335,
+  "files": {
+    "clean_trainset_28spk_wav.zip": {
+      "filename": "clean_trainset_28spk_wav.zip",
+      "path": "/content/drive/MyDrive/Speech-Enhancement/data/raw_48k_zips/clean_trainset_28spk_wav.zip",
+      "size_bytes": 2486057279,
+      "size_mb": 2370.89,
+      "is_zip": true,
+      "zip_status": "valid",
+      "sha256": "dbb13b9ffe752c58764d75de272706a2b467744f33455cec6deb2b12ca01df66"
+    },
+    "noisy_trainset_28spk_wav.zip": {
+      "filename": "noisy_trainset_28spk_wav.zip",
+      "path": "/content/drive/MyDrive/Speech-Enhancement/data/raw_48k_zips/noisy_trainset_28spk_wav.zip",
+      "size_bytes": 2830205201,
+      "size_mb": 2699.09,
+      "is_zip": true,
+      "zip_status": "valid",
+      "sha256": "a656af041f5a8931b02077331281c2b82ebc35b38dc83ff92935015bcd7920b4"
+    },
+    "clean_testset_wav.zip": {
+      "filename": "clean_testset_wav.zip",
+      "path": "/content/drive/MyDrive/Speech-Enhancement/data/raw_48k_zips/clean_testset_wav.zip",
+      "size_bytes": 154332064,
+      "size_mb": 147.18,
+      "is_zip": true,
+      "zip_status": "valid",
+      "sha256": "b60bfc2b9df38466d8eb45057c087c6e5dee196c67a0ed7bca628ae2a8611c4e"
+    },
+    "noisy_testset_wav.zip": {
+      "filename": "noisy_testset_wav.zip",
+      "path": "/content/drive/MyDrive/Speech-Enhancement/data/raw_48k_zips/noisy_testset_wav.zip",
+      "size_bytes": 170578854,
+      "size_mb": 162.68,
+      "is_zip": true,
+      "zip_status": "valid",
+      "sha256": "ba4a893f45b627f15209ba30ab584dd495b3680cd6f216dd08d143a257611993"
+    },
+    "logfiles.zip": {
+      "filename": "logfiles.zip",
+      "path": "/content/drive/MyDrive/Speech-Enhancement/data/raw_48k_zips/logfiles.zip",
+      "size_bytes": 115932,
+      "size_mb": 0.11,
+      "is_zip": true,
+      "zip_status": "valid",
+      "sha256": "ab37c41f31bc2b6c204cc10c8e5bb8bde800307fdb49f277e366d986fefc9e39"
+    },
+    "trainset_28spk_txt.zip": {
+      "filename": "trainset_28spk_txt.zip",
+      "path": "/content/drive/MyDrive/Speech-Enhancement/data/raw_48k_zips/trainset_28spk_txt.zip",
+      "size_bytes": 6489312,
+      "size_mb": 6.19,
+      "is_zip": true,
+      "zip_status": "valid",
+      "sha256": "5ec7d6ef99b78a7d039f1ecd6db7d0d5b660877b464de15e1d75de6425fbf3f8"
+    },
+    "testset_txt.zip": {
+      "filename": "testset_txt.zip",
+      "path": "/content/drive/MyDrive/Speech-Enhancement/data/raw_48k_zips/testset_txt.zip",
+      "size_bytes": 440277,
+      "size_mb": 0.42,
+      "is_zip": true,
+      "zip_status": "valid",
+      "sha256": "b31edb40b39c8ddc99eda13ea038f51be3065a8b70272c8051ffc2c4294cf1d3"
+    },
+    "license_text": {
+      "filename": "license_text",
+      "path": "/content/drive/MyDrive/Speech-Enhancement/data/raw_48k_zips/license_text",
+      "size_bytes": 17416,
+      "size_mb": 0.02,
+      "is_zip": false,
+      "zip_status": "not_applicable",
+      "sha256": "b34e17103bfb246f2549fc82a279e6ba28834e0cb42f76a92efc14b72e3a3723"
+    }
+  }
+}

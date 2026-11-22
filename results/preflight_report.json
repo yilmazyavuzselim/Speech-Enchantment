@@ -1,0 +1,25 @@
+{
+  "status": "PREFLIGHT_PASSED",
+  "device": "cuda",
+  "gpu_name": "NVIDIA L4",
+  "batch_size": 16,
+  "batches_per_epoch": 767,
+  "avg_batch_ms": 546.27,
+  "peak_gpu_allocated_mb": 4190.55,
+  "peak_gpu_reserved_mb": 5134.0,
+  "est_epoch_train_sec": 418.99,
+  "est_epoch_val_sec": 45.0,
+  "est_epoch_total_sec": 463.99,
+  "est_15_epochs_total_minutes": 116.0,
+  "loss_weights": {
+    "l1_weight": 1.0,
+    "stft_sc_factor": 0.1,
+    "stft_mag_factor": 0.1
+  },
+  "grad_clip_max_norm": 5.0,
+  "dataset_counts": {
+    "train_utterances": 10802,
+    "train_windowed_chunks": 12272,
+    "val_utterances": 770
+  }
+}

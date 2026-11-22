@@ -1,0 +1,106 @@
+{
+  "best_val_pesq.th": {
+    "exists": true,
+    "size_bytes": 226478148,
+    "keys": [
+      "epoch",
+      "extra",
+      "history",
+      "model_state_dict",
+      "optimizer_state_dict"
+    ],
+    "epoch": 14,
+    "num_model_state_tensors": 48,
+    "has_optimizer_state": true,
+    "history_len": 15,
+    "extra_keys": [
+      "best_val_loss",
+      "best_val_loss_epoch",
+      "best_val_pesq",
+      "best_val_pesq_epoch",
+      "best_val_stoi",
+      "latest_metrics"
+    ],
+    "best_val_loss": 0.09190479608663878,
+    "best_val_loss_epoch": 9,
+    "best_val_pesq": 2.5691,
+    "best_val_pesq_epoch": 14,
+    "best_val_stoi": 0.8835,
+    "seed": null,
+    "has_config": false
+  },
+  "best_val_loss.th": {
+    "exists": true,
+    "size_bytes": 226476868,
+    "keys": [
+      "epoch",
+      "extra",
+      "history",
+      "model_state_dict",
+      "optimizer_state_dict"
+    ],
+    "epoch": 9,
+    "num_model_state_tensors": 48,
+    "has_optimizer_state": true,
+    "history_len": 10,
+    "extra_keys": [
+      "best_val_loss",
+      "best_val_loss_epoch",
+      "best_val_pesq",
+      "best_val_pesq_epoch",
+      "best_val_stoi",
+      "latest_metrics"
+    ],
+    "best_val_loss": 0.09190479608663878,
+    "best_val_loss_epoch": 9,
+    "best_val_pesq": 2.5614,
+    "best_val_pesq_epoch": 9,
+    "best_val_stoi": 0.8844,
+    "seed": null,
+    "has_config": false
+  },
+  "checkpoint.th": {
+    "exists": true,
+    "size_bytes": 226477767,
+    "keys": [
+      "epoch",
+      "extra",
+      "history",
+      "model_state_dict",
+      "optimizer_state_dict"
+    ],
+    "epoch": 15,
+    "num_model_state_tensors": 48,
+    "has_optimizer_state": true,
+    "history_len": 16,
+    "extra_keys": [
+      "best_val_loss",
+      "best_val_loss_epoch",
+      "best_val_pesq",
+      "best_val_pesq_epoch",
+      "best_val_stoi",
+      "latest_metrics"
+    ],
+    "best_val_loss": 0.09190479608663878,
+    "best_val_loss_epoch": 9,
+    "best_val_pesq": 2.5691,
+    "best_val_pesq_epoch": 14,
+    "best_val_stoi": 0.8835,
+    "seed": null,
+    "has_config": false
+  },
+  "val_sample_verification": {
+    "utterance_id": "p226_001",
+    "speaker_id": "p226",
+    "num_samples": 36480,
+    "output_shape": [
+      1,
+      36480
+    ],
+    "all_finite": true,
+    "noisy_pesq": 1.389984130859375,
+    "best_val_pesq_ckpt_pesq": 2.2742724418640137,
+    "noisy_stoi": 0.7481413647138665,
+    "best_val_pesq_ckpt_stoi": 0.8227213986141917
+  }
+}

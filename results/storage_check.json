@@ -1,0 +1,89 @@
+{
+  "disks": {
+    "/content": {
+      "total": 253055008768,
+      "used": 253743104,
+      "free": 252784488448,
+      "total_str": "235.68 GB (253,055,008,768 bytes)",
+      "used_str": "241.99 MB (253,743,104 bytes)",
+      "free_str": "235.42 GB (252,784,488,448 bytes)"
+    },
+    "/content/drive": {
+      "total": 253055008768,
+      "used": 12909748224,
+      "free": 240145260544,
+      "total_str": "235.68 GB (253,055,008,768 bytes)",
+      "used_str": "12.02 GB (12,909,748,224 bytes)",
+      "free_str": "223.65 GB (240,145,260,544 bytes)"
+    },
+    "/content/drive/MyDrive": {
+      "total": 253055008768,
+      "used": 12909748224,
+      "free": 240145260544,
+      "total_str": "235.68 GB (253,055,008,768 bytes)",
+      "used_str": "12.02 GB (12,909,748,224 bytes)",
+      "free_str": "223.65 GB (240,145,260,544 bytes)"
+    }
+  },
+  "remote_files": {
+    "clean_trainset_28spk_wav.zip": {
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/245452b6-6235-44b6-a6f9-e7eb19797769/content",
+      "content_length": 2486057279,
+      "content_type": "application/zip ;charset=UTF-8",
+      "status": 200,
+      "content_length_str": "2.32 GB (2,486,057,279 bytes)"
+    },
+    "noisy_trainset_28spk_wav.zip": {
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/ecb5a102-bb00-46d3-8af5-40c79823b837/content",
+      "content_length": 2830205201,
+      "content_type": "application/zip ;charset=UTF-8",
+      "status": 200,
+      "content_length_str": "2.64 GB (2,830,205,201 bytes)"
+    },
+    "clean_testset_wav.zip": {
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/dec213d3-bf57-4777-9663-c24bdce92d5e/content",
+      "content_length": 154332064,
+      "content_type": "application/zip ;charset=UTF-8",
+      "status": 200,
+      "content_length_str": "147.18 MB (154,332,064 bytes)"
+    },
+    "noisy_testset_wav.zip": {
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/13c1bfbf-14a6-41db-9b41-8f7310f01ad5/content",
+      "content_length": 170578854,
+      "content_type": "application/zip ;charset=UTF-8",
+      "status": 200,
+      "content_length_str": "162.68 MB (170,578,854 bytes)"
+    },
+    "logfiles.zip": {
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/11185dc8-9cf1-405b-b858-35bd6a04aedd/content",
+      "content_length": 115932,
+      "content_type": "application/zip ;charset=UTF-8",
+      "status": 200,
+      "content_length_str": "0.11 MB (115,932 bytes)"
+    },
+    "trainset_28spk_txt.zip": {
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa/content",
+      "content_length": 6489312,
+      "content_type": "application/zip ;charset=UTF-8",
+      "status": 200,
+      "content_length_str": "6.19 MB (6,489,312 bytes)"
+    },
+    "testset_txt.zip": {
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/09e12592-879e-4749-bf6d-e34cf0d1ddf6/content",
+      "content_length": 440277,
+      "content_type": "application/zip ;charset=UTF-8",
+      "status": 200,
+      "content_length_str": "0.42 MB (440,277 bytes)"
+    },
+    "license_text": {
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/7e7bc32f-e94a-436a-8e97-416a972c7e1a/content",
+      "content_length": 17416,
+      "content_type": "text/plain;charset=UTF-8",
+      "status": 200,
+      "content_length_str": "0.02 MB (17,416 bytes)"
+    }
+  },
+  "total_remote_bytes": 5648236335,
+  "total_remote_str": "5.26 GB (5,648,236,335 bytes)",
+  "html_sizes": {}
+}

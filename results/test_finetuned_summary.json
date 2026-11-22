@@ -1,0 +1,28 @@
+{
+  "condition": "dns48_finetuned",
+  "checkpoint": "/content/drive/MyDrive/Speech-Enhancement/checkpoints/best_val_pesq.th",
+  "total_utterances": 824,
+  "inference_duration_sec": 15.67,
+  "eval_duration_sec": 16.86,
+  "stats": {
+    "num_utterances": 824,
+    "pesq_wb": {
+      "count_successful": 824,
+      "count_failed": 0,
+      "mean": 2.918,
+      "std": 0.6483,
+      "median": 3.0316,
+      "min": 1.1415,
+      "max": 4.1229
+    },
+    "stoi": {
+      "count_successful": 824,
+      "count_failed": 0,
+      "mean": 0.948,
+      "std": 0.0507,
+      "median": 0.9645,
+      "min": 0.6812,
+      "max": 0.9998
+    }
+  }
+}

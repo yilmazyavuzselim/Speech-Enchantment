@@ -1,0 +1,792 @@
+{
+  "split": "test",
+  "num_utterances": 824,
+  "conditions": {
+    "noisy": {
+      "num_utterances": 824,
+      "pesq_wb": {
+        "count_successful": 824,
+        "count_failed": 0,
+        "mean": 1.9719,
+        "std": 0.7532,
+        "median": 1.7986,
+        "min": 1.0313,
+        "max": 4.3025
+      },
+      "stoi": {
+        "count_successful": 824,
+        "count_failed": 0,
+        "mean": 0.9211,
+        "std": 0.0709,
+        "median": 0.9403,
+        "min": 0.5587,
+        "max": 0.9998
+      }
+    },
+    "spectral_gating": {
+      "num_utterances": 824,
+      "pesq_wb": {
+        "count_successful": 824,
+        "count_failed": 0,
+        "mean": 1.4232,
+        "std": 0.2848,
+        "median": 1.3502,
+        "min": 1.0391,
+        "max": 2.6532
+      },
+      "stoi": {
+        "count_successful": 824,
+        "count_failed": 0,
+        "mean": 0.8234,
+        "std": 0.0655,
+        "median": 0.832,
+        "min": 0.4614,
+        "max": 0.963
+      }
+    },
+    "dns48_zeroshot": {
+      "num_utterances": 824,
+      "pesq_wb": {
+        "count_successful": 824,
+        "count_failed": 0,
+        "mean": 2.5203,
+        "std": 0.6258,
+        "median": 2.5263,
+        "min": 1.1491,
+        "max": 3.9552
+      },
+      "stoi": {
+        "count_successful": 824,
+        "count_failed": 0,
+        "mean": 0.93,
+        "std": 0.0638,
+        "median": 0.9476,
+        "min": 0.5605,
+        "max": 0.9997
+      }
+    }
+  },
+  "breakdowns": {
+    "by_snr": {
+      "2.5": {
+        "noisy": {
+          "num_utterances": 207,
+          "pesq_wb": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 1.4232,
+            "std": 0.4251,
+            "median": 1.2723,
+            "min": 1.0313,
+            "max": 3.2774
+          },
+          "stoi": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 0.8683,
+            "std": 0.0864,
+            "median": 0.8833,
+            "min": 0.5587,
+            "max": 0.9992
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 207,
+          "pesq_wb": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 1.281,
+            "std": 0.2183,
+            "median": 1.21,
+            "min": 1.0391,
+            "max": 2.4082
+          },
+          "stoi": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 0.786,
+            "std": 0.0806,
+            "median": 0.799,
+            "min": 0.4614,
+            "max": 0.9481
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 207,
+          "pesq_wb": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 1.986,
+            "std": 0.4584,
+            "median": 1.9265,
+            "min": 1.1491,
+            "max": 3.1675
+          },
+          "stoi": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 0.8907,
+            "std": 0.0748,
+            "median": 0.9053,
+            "min": 0.5605,
+            "max": 0.9975
+          }
+        }
+      },
+      "7.5": {
+        "noisy": {
+          "num_utterances": 206,
+          "pesq_wb": {
+            "count_successful": 206,
+            "count_failed": 0,
+            "mean": 1.7651,
+            "std": 0.5921,
+            "median": 1.602,
+            "min": 1.0483,
+            "max": 3.3113
+          },
+          "stoi": {
+            "count_successful": 206,
+            "count_failed": 0,
+            "mean": 0.9188,
+            "std": 0.059,
+            "median": 0.9317,
+            "min": 0.7116,
+            "max": 0.9989
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 206,
+          "pesq_wb": {
+            "count_successful": 206,
+            "count_failed": 0,
+            "mean": 1.3968,
+            "std": 0.2501,
+            "median": 1.333,
+            "min": 1.072,
+            "max": 2.2784
+          },
+          "stoi": {
+            "count_successful": 206,
+            "count_failed": 0,
+            "mean": 0.8267,
+            "std": 0.0562,
+            "median": 0.8311,
+            "min": 0.6323,
+            "max": 0.963
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 206,
+          "pesq_wb": {
+            "count_successful": 206,
+            "count_failed": 0,
+            "mean": 2.3774,
+            "std": 0.5122,
+            "median": 2.3869,
+            "min": 1.3039,
+            "max": 3.4589
+          },
+          "stoi": {
+            "count_successful": 206,
+            "count_failed": 0,
+            "mean": 0.926,
+            "std": 0.0573,
+            "median": 0.9385,
+            "min": 0.7039,
+            "max": 0.9985
+          }
+        }
+      },
+      "12.5": {
+        "noisy": {
+          "num_utterances": 207,
+          "pesq_wb": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 2.1041,
+            "std": 0.6947,
+            "median": 2.0026,
+            "min": 1.0709,
+            "max": 3.7862
+          },
+          "stoi": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 0.9403,
+            "std": 0.0501,
+            "median": 0.9489,
+            "min": 0.7511,
+            "max": 0.9994
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 207,
+          "pesq_wb": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 1.4446,
+            "std": 0.2574,
+            "median": 1.3769,
+            "min": 1.1268,
+            "max": 2.5295
+          },
+          "stoi": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 0.8351,
+            "std": 0.0499,
+            "median": 0.8422,
+            "min": 0.643,
+            "max": 0.9429
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 207,
+          "pesq_wb": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 2.6599,
+            "std": 0.5211,
+            "median": 2.6562,
+            "min": 1.4209,
+            "max": 3.7341
+          },
+          "stoi": {
+            "count_successful": 207,
+            "count_failed": 0,
+            "mean": 0.9444,
+            "std": 0.05,
+            "median": 0.9569,
+            "min": 0.7752,
+            "max": 0.9992
+          }
+        }
+      },
+      "17.5": {
+        "noisy": {
+          "num_utterances": 204,
+          "pesq_wb": {
+            "count_successful": 204,
+            "count_failed": 0,
+            "mean": 2.6035,
+            "std": 0.7063,
+            "median": 2.5794,
+            "min": 1.1048,
+            "max": 4.3025
+          },
+          "stoi": {
+            "count_successful": 204,
+            "count_failed": 0,
+            "mean": 0.9574,
+            "std": 0.0464,
+            "median": 0.974,
+            "min": 0.745,
+            "max": 0.9998
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 204,
+          "pesq_wb": {
+            "count_successful": 204,
+            "count_failed": 0,
+            "mean": 1.5722,
+            "std": 0.324,
+            "median": 1.4969,
+            "min": 1.0881,
+            "max": 2.6532
+          },
+          "stoi": {
+            "count_successful": 204,
+            "count_failed": 0,
+            "mean": 0.8462,
+            "std": 0.054,
+            "median": 0.8541,
+            "min": 0.5904,
+            "max": 0.9507
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 204,
+          "pesq_wb": {
+            "count_successful": 204,
+            "count_failed": 0,
+            "mean": 3.0651,
+            "std": 0.4485,
+            "median": 3.1115,
+            "min": 1.7045,
+            "max": 3.9552
+          },
+          "stoi": {
+            "count_successful": 204,
+            "count_failed": 0,
+            "mean": 0.9594,
+            "std": 0.0478,
+            "median": 0.9787,
+            "min": 0.7338,
+            "max": 0.9997
+          }
+        }
+      }
+    },
+    "by_noise": {
+      "bus": {
+        "noisy": {
+          "num_utterances": 164,
+          "pesq_wb": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 2.4845,
+            "std": 0.7773,
+            "median": 2.5473,
+            "min": 1.1114,
+            "max": 4.1687
+          },
+          "stoi": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 0.9519,
+            "std": 0.0472,
+            "median": 0.9667,
+            "min": 0.702,
+            "max": 0.9994
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 164,
+          "pesq_wb": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 1.522,
+            "std": 0.3188,
+            "median": 1.4492,
+            "min": 1.0881,
+            "max": 2.6532
+          },
+          "stoi": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 0.8401,
+            "std": 0.0558,
+            "median": 0.8458,
+            "min": 0.6558,
+            "max": 0.9569
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 164,
+          "pesq_wb": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 2.8184,
+            "std": 0.5711,
+            "median": 2.9059,
+            "min": 1.6722,
+            "max": 3.8656
+          },
+          "stoi": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 0.9488,
+            "std": 0.0496,
+            "median": 0.9648,
+            "min": 0.7339,
+            "max": 0.9992
+          }
+        }
+      },
+      "cafe": {
+        "noisy": {
+          "num_utterances": 164,
+          "pesq_wb": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 1.4919,
+            "std": 0.4302,
+            "median": 1.2984,
+            "min": 1.0313,
+            "max": 2.8221
+          },
+          "stoi": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 0.8768,
+            "std": 0.0861,
+            "median": 0.8976,
+            "min": 0.603,
+            "max": 0.9965
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 164,
+          "pesq_wb": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 1.2904,
+            "std": 0.1989,
+            "median": 1.2383,
+            "min": 1.0391,
+            "max": 2.2037
+          },
+          "stoi": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 0.7925,
+            "std": 0.0811,
+            "median": 0.8036,
+            "min": 0.4988,
+            "max": 0.9464
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 164,
+          "pesq_wb": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 2.1181,
+            "std": 0.5447,
+            "median": 2.0863,
+            "min": 1.178,
+            "max": 3.2454
+          },
+          "stoi": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 0.9032,
+            "std": 0.0721,
+            "median": 0.9221,
+            "min": 0.6071,
+            "max": 0.9979
+          }
+        }
+      },
+      "living": {
+        "noisy": {
+          "num_utterances": 166,
+          "pesq_wb": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 1.6178,
+            "std": 0.4898,
+            "median": 1.4838,
+            "min": 1.0468,
+            "max": 2.7365
+          },
+          "stoi": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 0.904,
+            "std": 0.0626,
+            "median": 0.9144,
+            "min": 0.6887,
+            "max": 0.9968
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 166,
+          "pesq_wb": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 1.3628,
+            "std": 0.2245,
+            "median": 1.3191,
+            "min": 1.0601,
+            "max": 2.3637
+          },
+          "stoi": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 0.8202,
+            "std": 0.0561,
+            "median": 0.8249,
+            "min": 0.6679,
+            "max": 0.9507
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 166,
+          "pesq_wb": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 2.315,
+            "std": 0.5432,
+            "median": 2.254,
+            "min": 1.1491,
+            "max": 3.3934
+          },
+          "stoi": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 0.9218,
+            "std": 0.0605,
+            "median": 0.9327,
+            "min": 0.7195,
+            "max": 0.9981
+          }
+        }
+      },
+      "office": {
+        "noisy": {
+          "num_utterances": 164,
+          "pesq_wb": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 2.5361,
+            "std": 0.7057,
+            "median": 2.6176,
+            "min": 1.1077,
+            "max": 4.3025
+          },
+          "stoi": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 0.9583,
+            "std": 0.0559,
+            "median": 0.9757,
+            "min": 0.5587,
+            "max": 0.9998
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 164,
+          "pesq_wb": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 1.5682,
+            "std": 0.3317,
+            "median": 1.5054,
+            "min": 1.1007,
+            "max": 2.5295
+          },
+          "stoi": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 0.8432,
+            "std": 0.0609,
+            "median": 0.8488,
+            "min": 0.4614,
+            "max": 0.963
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 164,
+          "pesq_wb": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 2.9006,
+            "std": 0.5518,
+            "median": 2.9915,
+            "min": 1.632,
+            "max": 3.9552
+          },
+          "stoi": {
+            "count_successful": 164,
+            "count_failed": 0,
+            "mean": 0.9498,
+            "std": 0.0622,
+            "median": 0.9694,
+            "min": 0.5605,
+            "max": 0.9997
+          }
+        }
+      },
+      "psquare": {
+        "noisy": {
+          "num_utterances": 166,
+          "pesq_wb": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 1.7367,
+            "std": 0.5673,
+            "median": 1.6115,
+            "min": 1.0451,
+            "max": 3.1455
+          },
+          "stoi": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 0.9145,
+            "std": 0.0621,
+            "median": 0.9248,
+            "min": 0.72,
+            "max": 0.9996
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 166,
+          "pesq_wb": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 1.3738,
+            "std": 0.2237,
+            "median": 1.3142,
+            "min": 1.0745,
+            "max": 2.2349
+          },
+          "stoi": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 0.8211,
+            "std": 0.057,
+            "median": 0.8319,
+            "min": 0.5904,
+            "max": 0.9422
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 166,
+          "pesq_wb": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 2.4527,
+            "std": 0.5435,
+            "median": 2.4051,
+            "min": 1.2683,
+            "max": 3.7107
+          },
+          "stoi": {
+            "count_successful": 166,
+            "count_failed": 0,
+            "mean": 0.9266,
+            "std": 0.0605,
+            "median": 0.9385,
+            "min": 0.7338,
+            "max": 0.9995
+          }
+        }
+      }
+    },
+    "by_speaker": {
+      "p232": {
+        "noisy": {
+          "num_utterances": 393,
+          "pesq_wb": {
+            "count_successful": 393,
+            "count_failed": 0,
+            "mean": 2.1687,
+            "std": 0.7147,
+            "median": 2.116,
+            "min": 1.0883,
+            "max": 4.3025
+          },
+          "stoi": {
+            "count_successful": 393,
+            "count_failed": 0,
+            "mean": 0.927,
+            "std": 0.0679,
+            "median": 0.9489,
+            "min": 0.6869,
+            "max": 0.9998
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 393,
+          "pesq_wb": {
+            "count_successful": 393,
+            "count_failed": 0,
+            "mean": 1.3991,
+            "std": 0.2847,
+            "median": 1.3001,
+            "min": 1.0603,
+            "max": 2.6532
+          },
+          "stoi": {
+            "count_successful": 393,
+            "count_failed": 0,
+            "mean": 0.8334,
+            "std": 0.0604,
+            "median": 0.8382,
+            "min": 0.5904,
+            "max": 0.963
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 393,
+          "pesq_wb": {
+            "count_successful": 393,
+            "count_failed": 0,
+            "mean": 2.6535,
+            "std": 0.5909,
+            "median": 2.6991,
+            "min": 1.2683,
+            "max": 3.9552
+          },
+          "stoi": {
+            "count_successful": 393,
+            "count_failed": 0,
+            "mean": 0.94,
+            "std": 0.0599,
+            "median": 0.9598,
+            "min": 0.7039,
+            "max": 0.9997
+          }
+        }
+      },
+      "p257": {
+        "noisy": {
+          "num_utterances": 431,
+          "pesq_wb": {
+            "count_successful": 431,
+            "count_failed": 0,
+            "mean": 1.7925,
+            "std": 0.7425,
+            "median": 1.5064,
+            "min": 1.0313,
+            "max": 4.1687
+          },
+          "stoi": {
+            "count_successful": 431,
+            "count_failed": 0,
+            "mean": 0.9157,
+            "std": 0.0732,
+            "median": 0.9336,
+            "min": 0.5587,
+            "max": 0.9994
+          }
+        },
+        "spectral_gating": {
+          "num_utterances": 431,
+          "pesq_wb": {
+            "count_successful": 431,
+            "count_failed": 0,
+            "mean": 1.4451,
+            "std": 0.2831,
+            "median": 1.3823,
+            "min": 1.0391,
+            "max": 2.6208
+          },
+          "stoi": {
+            "count_successful": 431,
+            "count_failed": 0,
+            "mean": 0.8143,
+            "std": 0.0685,
+            "median": 0.825,
+            "min": 0.4614,
+            "max": 0.9482
+          }
+        },
+        "dns48_zeroshot": {
+          "num_utterances": 431,
+          "pesq_wb": {
+            "count_successful": 431,
+            "count_failed": 0,
+            "mean": 2.3989,
+            "std": 0.6319,
+            "median": 2.3389,
+            "min": 1.1491,
+            "max": 3.8656
+          },
+          "stoi": {
+            "count_successful": 431,
+            "count_failed": 0,
+            "mean": 0.9209,
+            "std": 0.0659,
+            "median": 0.9346,
+            "min": 0.5605,
+            "max": 0.9984
+          }
+        }
+      }
+    }
+  }
+}

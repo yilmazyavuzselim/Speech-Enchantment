@@ -1,0 +1,5 @@
+condition,num_utterances,pesq_mean,pesq_std,pesq_median,pesq_min,pesq_max,stoi_mean,stoi_std,stoi_median,stoi_min,stoi_max,delta_pesq_vs_noisy,rel_pesq_vs_noisy_pct,delta_stoi_vs_noisy,rel_stoi_vs_noisy_pct,delta_pesq_vs_zeroshot,rel_pesq_vs_zeroshot_pct,delta_stoi_vs_zeroshot,rel_stoi_vs_zeroshot_pct
+noisy,824,1.9719,0.7532,1.7986,1.0313,4.3025,0.9211,0.0709,0.9403,0.5587,0.9998,0.0,0.0,0.0,0.0,-0.5484,-21.76,-0.0089,-0.96
+spectral_gating,824,1.4232,0.2848,1.3502,1.0391,2.6532,0.8234,0.0655,0.832,0.4614,0.963,-0.5487,-27.83,-0.0977,-10.61,-1.0971,-43.53,-0.1066,-11.46
+dns48_zeroshot,824,2.5203,0.6258,2.5263,1.1491,3.9552,0.93,0.0638,0.9476,0.5605,0.9997,0.5484,27.81,0.0089,0.97,0.0,0.0,0.0,0.0
+dns48_finetuned,824,2.918,0.6483,3.0316,1.1415,4.1229,0.948,0.0507,0.9645,0.6812,0.9998,0.9461,47.98,0.0269,2.92,0.3977,15.78,0.018,1.94

@@ -1,0 +1,40 @@
+{
+  "status": "SUCCESS",
+  "subsets": {
+    "clean_trainset_28spk_wav": {
+      "src_dir": "/content/raw_48k_extracted/clean_trainset_28spk_wav",
+      "dst_dir": "/content/data_16k/clean_trainset_28spk_wav",
+      "total_files": 11572,
+      "elapsed_sec": 288.41,
+      "errors": []
+    },
+    "noisy_trainset_28spk_wav": {
+      "src_dir": "/content/raw_48k_extracted/noisy_trainset_28spk_wav",
+      "dst_dir": "/content/data_16k/noisy_trainset_28spk_wav",
+      "total_files": 11572,
+      "elapsed_sec": 287.02,
+      "errors": []
+    },
+    "clean_testset_wav": {
+      "src_dir": "/content/raw_48k_extracted/clean_testset_wav",
+      "dst_dir": "/content/data_16k/clean_testset_wav",
+      "total_files": 824,
+      "elapsed_sec": 20.74,
+      "errors": []
+    },
+    "noisy_testset_wav": {
+      "src_dir": "/content/raw_48k_extracted/noisy_testset_wav",
+      "dst_dir": "/content/data_16k/noisy_testset_wav",
+      "total_files": 824,
+      "elapsed_sec": 21.31,
+      "errors": []
+    }
+  },
+  "tar_archive": {
+    "tar_path": "/content/drive/MyDrive/Speech-Enhancement/data/edinburgh_16k.tar",
+    "size_bytes": 2367969280,
+    "size_gb": 2.205,
+    "elapsed_sec": 13.95
+  },
+  "local_16k_dir": "/content/data_16k"
+}

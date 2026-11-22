@@ -1,0 +1,23 @@
+{
+  "job_002_verify_license_and_docs": {
+    "command": "python bridge/step2_fetch_docs.py",
+    "returncode": 0,
+    "elapsed_sec": 14.4,
+    "completed_at": "2026-11-16T12:53:12.164088+00:00",
+    "summary": "Fetched https://datashare.ed.ac.uk/bitstream/handle/10283/2791/license_text (saved verbatim to bridge/verified_license_text.txt) and https://datashare.ed.ac.uk/bitstream/handle/10283/2791/testset_txt.zip (824 test utterance transcript files)."
+  },
+  "job_003_stage2_real_pair_smoke_test": {
+    "command": "python bridge/step2_run_real_pair.py",
+    "returncode": 0,
+    "elapsed_sec": 71.16,
+    "completed_at": "2026-11-16T12:55:56.380887+00:00",
+    "output": "=== 3. EXTRACTING SINGLE REAL AUDIO PAIR (p232_001.wav) FOR STAGE 2 SMOKE TEST ===\nExtracted single pair: /content/stage2_verify/clean_p232_001.wav (167208 bytes) and /content/stage2_verify/noisy_p232_001.wav (167208 bytes)\nTranscript for p232_001.txt: Please call Stella.\n\n=== 4. RUNNING SCRIPTS/04_SMOKE_TEST.PY WITH REAL AUDIO PAIR (p232_001.wav) ===\nPython version : 3.13.16\nPyTorch version: 2.14.1+cu130\nDevice         : cuda (NVIDIA L4)\n========================================================================\n[STAGE 1] SYNTHETIC 16 kHz SMOKE TEST (No dataset download required)\n========================================================================\n[1/7] Loading official pretrained Demucs dns48 checkpoint...\n      PASS: Loaded dns48 on cuda (18,867,937 parameters, SR=16000 Hz).\n[2/7] Inference check: model.eval() + torch.no_grad() forward pass & shape/length parity...\n      PASS: Inference output shape (2, 1, 37920) matches input length; all values finite.\n[3/7] Training mode check: calling model.train() BEFORE new training forward pass...\n      PASS: Training forward pass completed in model.train() mode with shape (2, 1, 64000).\n[4/7] Loss check: computing L1 + 0.1 * raw_sc_loss + 0.1 * raw_mag_loss...\n      PASS: l1=0.07730, raw_sc=0.60842, raw_mag=2.97135, total_loss=0.43527 (all finite).\n[5/7] Backward check: running total_loss.backward() and verifying finite gradients...\n      PASS: Backward pass succeeded; all 48 parameter tensors have finite gradients.\n[6/7] Optimizer check: clipping gradients and running optimizer.step()...\n      PASS: Optimizer updated model parameters cleanly (no NaN/Inf).\n[7/7] Checkpoint check: atomic save and reload equivalence in eval() mode...\n      PASS: Reloaded checkpoint matches original model (max_abs_diff=0.00e+00).\n      GPU Peak Allocated Memory during Stage 1 smoke test: 661.8 MB\n\n========================================================================\n[STAGE 2] REAL AUDIO PAIR & METRICS (PESQ / STOI) SMOKE TEST\n========================================================================\nResampling real pair from 48000 Hz -> 16000 Hz...\nReal Pair (clean_p232_001.wav, N=27861 samples @ 16000 Hz):\n  Noisy      -> PESQ(wb): 2.9225 | STOI: 0.8966\n  dns48 Zero -> PESQ(wb): 3.0272 | STOI: 0.9015\n\nALL SMOKE TEST CHECKS PASSED SUCCESSFULLY."
+  },
+  "job_004_parse_metadata_and_logs": {
+    "command": "python bridge/step2_parse_metadata.py",
+    "returncode": 0,
+    "elapsed_sec": 5.31,
+    "completed_at": "2026-11-16T12:57:20.700692+00:00",
+    "output": "=== 2. FETCHING OFFICIAL LOGFILES.ZIP (https://datashare.ed.ac.uk/bitstream/handle/10283/2791/logfiles.zip) ===\nFiles inside logfiles.zip: ['log_readme.txt', 'log_testset.txt', '__MACOSX/', '__MACOSX/._log_testset.txt', 'log_trainset_28spk.txt', '__MACOSX/._log_trainset_28spk.txt', 'log_trainset_56spk.txt', '__MACOSX/._log_trainset_56spk.txt']\n\n--- log_readme.txt (Total lines: 3, first 10 lines) ---\n   The log files describe the noisy condition per wavfile for each of the datasets as follows:\n   \n   wavfile noise SNR(dB)\n\n--- log_testset.txt (Total lines: 824, first 10 lines) ---\n   p257_001 bus 1.750000e+01\n   p257_002 bus 1.250000e+01\n   p257_003 bus 7.500000e+00\n   p257_004 bus 2.500000e+00\n   p257_006 cafe 1.750000e+01\n   p257_007 cafe 1.250000e+01\n   p257_008 cafe 7.500000e+00\n   p257_009 cafe 2.500000e+00\n   p257_010 living 1.750000e+01\n   p257_011 living 1.250000e+01\n\n--- log_trainset_28spk.txt (Total lines: 11572, first 10 lines) ---\n   p236_002 babble 15\n   p236_003 babble 10\n   p236_005 babble 5\n   p236_006 babble 0\n   p236_007 cafeteria 15\n   p236_009 cafeteria 10\n   p236_010 cafeteria 5\n   p236_011 cafeteria 0\n   p236_012 car 15\n   p236_013 car 10\n\n--- log_trainset_56spk.txt (Total lines: 23075, first 10 lines) ---\n   p299_001 babble 15\n   p299_002 babble 10\n   p299_003 babble 5\n   p299_004 babble 0\n   p299_005 cafeteria 15\n   p299_006 cafeteria 10\n   p299_007 cafeteria 5\n   p299_008 cafeteria 0\n   p299_009 car 15\n   p299_010 car 10"
+  }
+}
