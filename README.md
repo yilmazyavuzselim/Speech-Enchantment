@@ -188,6 +188,13 @@ Speech-Enhancement/
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
+├── Speech-Ench-Answers/
+│   ├── README.md
+│   ├── COMPLETE_PROJECT_REPORTS_AI_CONTEXT.md
+│   ├── reports_index.json
+│   ├── 01_Speech_Enhancement_Technical_Research_Report.md
+│   ├── ...
+│   └── 16_Phase_4D_Statistical_Analysis_Final_Report.md
 ├── bridge/
 │   ├── step2_audit_evidence.json
 │   ├── step2_fetch_docs.py
