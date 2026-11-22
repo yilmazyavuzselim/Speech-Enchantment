@@ -1,0 +1,38 @@
+# Python byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Datasets, audio archives, and checkpoints (stored on Google Drive)
+data/
+data_16k/
+checkpoints/
+outputs/
+*.wav
+!results/audio_examples/**/*.wav
+*.tar
+*.zip
+*.th
+*.pt
+*.pth
+
+# OS / IDE / Drive temporary files
+.DS_Store
+Thumbs.db
+.tmp.driveupload/
+.tmp.drivedownload/
+.ipynb_checkpoints/
+
+# Transient Colab bridge runtime state & logs (keep reusable verification scripts & license audit evidence)
+bridge/job_request.json
+bridge/job_result.json
+bridge/live_output.log
+bridge/worker_status.json
+bridge/*.tmp
+bridge/*.log
