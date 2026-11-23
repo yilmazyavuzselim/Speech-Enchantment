@@ -16,8 +16,10 @@ checkpoints/
 outputs/
 *.wav
 !results/audio_examples/**/*.wav
+!audio_demo/audio/**/*.wav
 *.tar
 *.zip
+!Speech_Enhancement_Offline_Audio_Demo.zip
 *.th
 *.pt
 *.pth

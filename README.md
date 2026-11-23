@@ -137,6 +137,22 @@ Four representative test utterances covering all 4 SNR levels (`2.5`, `7.5`, `12
 
 - **Note on Smoke-Test Utterance `p232_001.wav` (`bus`, `17.5 dB` SNR):** Evaluated on the serialized 16 kHz 16-bit `PCM_16` test dataset at Noisy PESQ `2.9238` (STOI `0.8967`), Spectral Gating PESQ `1.6644` (STOI `0.8554`), Zero-Shot PESQ `3.0293` (STOI `0.9017`), and Fine-Tuned PESQ **`3.1112`** (STOI **`0.9094`**). The slight $\approx 0.0013\text{–}0.0021$ PESQ difference relative to the Step 2 single-pair smoke test (`2.9225` Noisy / `3.0272` Zero-Shot) arises because Step 2 resampled the 48 kHz WAVs in memory as unquantized 32-bit `float32` tensors without disk `PCM_16` quantization (`±1/32768`) or `[-1.0, 1.0]` clipping.
 
+### 6. Interactive Offline Audio Demo & Portable Package (Phase 5B)
+
+For interactive auditory inspection, an offline demonstration player and portable archive are provided directly within the repository:
+- **Interactive Offline Web Demo:** [audio_demo/index.html](audio_demo/index.html) (see [audio_demo/README.md](audio_demo/README.md) for full guide).
+- **Portable Standalone Package:** [Speech_Enhancement_Offline_Audio_Demo.zip](Speech_Enhancement_Offline_Audio_Demo.zip) (3.01 MB standalone archive with verified SHA-256 integrity manifest).
+
+**Key Demonstration Capabilities:**
+1. **100% Offline & Zero Dependencies:** Operates locally via `file://` protocol in modern web browsers with HTML5 audio support (automated verification performed in headless Microsoft Edge only) with zero installation, zero external CDN requests, and zero local web server requirements.
+2. **Synchronized 5-Condition Audio Players:** Clean Reference, Noisy Mixture, Stationary Spectral Gating, Demucs `dns48` Zero-Shot, and Demucs `dns48` Fine-Tuned (Epoch 14), with single-audition mutual exclusion to prevent overlapping playback.
+3. **Seamless A/B Comparison Controller:** Instantly toggles between any two selected conditions (e.g., Noisy vs. Fine-Tuned, or Zero-Shot vs. Fine-Tuned) while preserving the exact playback timestamp.
+4. **Verified Cryptographic Integrity:** Contains 20 WAV files (3,741,710 total bytes) verified byte-for-byte identical to source evaluation outputs via [audio_demo/audio_integrity_manifest.json](audio_demo/audio_integrity_manifest.json).
+
+**How to Audition:**
+- **In-Repository:** Simply open `audio_demo/index.html` directly in your web browser.
+- **Standalone Archive:** Extract `Speech_Enhancement_Offline_Audio_Demo.zip` to any local directory and open `index.html`.
+
 ---
 
 ## Statistical Hypothesis Testing & Effect-Size Analysis (Phase 4D)
@@ -188,13 +204,32 @@ Speech-Enhancement/
 ├── .gitignore
 ├── README.md
 ├── requirements.txt
+├── Speech_Enhancement_Offline_Audio_Demo.zip
 ├── Speech-Ench-Answers/
 │   ├── README.md
 │   ├── COMPLETE_PROJECT_REPORTS_AI_CONTEXT.md
 │   ├── reports_index.json
 │   ├── 01_Speech_Enhancement_Technical_Research_Report.md
 │   ├── ...
-│   └── 17_Phase_5A_Final_Repository_Verification_Report.md
+│   ├── 17_Phase_5A_Final_Repository_Verification_Report.md
+│   └── 18_Phase_5B_Offline_Audio_Demo_Report.md
+├── audio_demo/
+│   ├── README.md
+│   ├── audio_integrity_manifest.json
+│   ├── index.html
+│   └── audio/
+│       ├── p232_012/
+│       │   ├── clean.wav
+│       │   ├── dns48_finetuned.wav
+│       │   ├── dns48_zeroshot.wav
+│       │   ├── noisy.wav
+│       │   └── spectral_gating.wav
+│       ├── p232_023/
+│       │   └── ...
+│       ├── p257_008/
+│       │   └── ...
+│       └── p257_014/
+│           └── ...
 ├── bridge/
 │   ├── step2_audit_evidence.json
 │   ├── step2_fetch_docs.py

@@ -1,0 +1,170 @@
+{
+  "created_at": "2026-11-22T12:29:42.693Z",
+  "description": "SHA-256 byte-for-byte integrity verification for offline audio demo",
+  "total_files": 20,
+  "expected_total_bytes": 3741710,
+  "actual_total_bytes": 3741710,
+  "all_verified": true,
+  "files": [
+    {
+      "utterance_id": "p232_023",
+      "filename": "clean.wav",
+      "relative_path": "audio/p232_023/clean.wav",
+      "size_bytes": 312648,
+      "sha256": "3be1791a7030fc4e92918447691c6084744db364842a1407fdcb603e88cb49df",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p232_023",
+      "filename": "noisy.wav",
+      "relative_path": "audio/p232_023/noisy.wav",
+      "size_bytes": 312648,
+      "sha256": "81f21f5ab8422f07d7e73b75937e47b5602fb410220d30d4257dea8531ada67c",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p232_023",
+      "filename": "spectral_gating.wav",
+      "relative_path": "audio/p232_023/spectral_gating.wav",
+      "size_bytes": 312648,
+      "sha256": "9161a611784114e7842945f185731821ad58c8c6235bbbf62dfa529609b92dd5",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p232_023",
+      "filename": "dns48_zeroshot.wav",
+      "relative_path": "audio/p232_023/dns48_zeroshot.wav",
+      "size_bytes": 312648,
+      "sha256": "aaeae81dadcae14ab56e24f05fdef768502f342f99225302eac6240764326658",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p232_023",
+      "filename": "dns48_finetuned.wav",
+      "relative_path": "audio/p232_023/dns48_finetuned.wav",
+      "size_bytes": 312648,
+      "sha256": "39d8f14a8ae57fd655ddb1c3ec2c0b72803e5dfc89099b4023e2392a9af5223a",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_008",
+      "filename": "clean.wav",
+      "relative_path": "audio/p257_008/clean.wav",
+      "size_bytes": 178704,
+      "sha256": "2d73016d829466d6d2b840720fbafe102ec25f5a6093cc1bfe38ffef71d774b7",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_008",
+      "filename": "noisy.wav",
+      "relative_path": "audio/p257_008/noisy.wav",
+      "size_bytes": 178704,
+      "sha256": "b05e5adc4b6f23f46a05a86a9b9d263c414c8da9cf2cddcea8b65289cb985d47",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_008",
+      "filename": "spectral_gating.wav",
+      "relative_path": "audio/p257_008/spectral_gating.wav",
+      "size_bytes": 178704,
+      "sha256": "7e45d586c91654f53af878b55e5a2c6f7ba64ba0f69f1955875d87d727a9abdb",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_008",
+      "filename": "dns48_zeroshot.wav",
+      "relative_path": "audio/p257_008/dns48_zeroshot.wav",
+      "size_bytes": 178704,
+      "sha256": "42fb9273d749f081b10af0ba63304a7f018384eb9c324c5fbc7b3d7f3103adab",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_008",
+      "filename": "dns48_finetuned.wav",
+      "relative_path": "audio/p257_008/dns48_finetuned.wav",
+      "size_bytes": 178704,
+      "sha256": "37756c128daaba4f5938f17bdfad5045664b8769e91f9eadeb35b122e996e285",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p232_012",
+      "filename": "clean.wav",
+      "relative_path": "audio/p232_012/clean.wav",
+      "size_bytes": 138786,
+      "sha256": "9e3ce88b86dbdfbed548bef4f79a4159c6d1656f6e0e7b570973e14798b373c1",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p232_012",
+      "filename": "noisy.wav",
+      "relative_path": "audio/p232_012/noisy.wav",
+      "size_bytes": 138786,
+      "sha256": "9d10fd202c80641d6c1d9e5db52ef42d40b5feb3f516b1d425cca08a2bcdc911",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p232_012",
+      "filename": "spectral_gating.wav",
+      "relative_path": "audio/p232_012/spectral_gating.wav",
+      "size_bytes": 138786,
+      "sha256": "7117325e7034d250c5b189e1fdff3615cc1def74a30c2c0441746efe7ab8e612",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p232_012",
+      "filename": "dns48_zeroshot.wav",
+      "relative_path": "audio/p232_012/dns48_zeroshot.wav",
+      "size_bytes": 138786,
+      "sha256": "8c50a06e1250095cd3bf114b33a189b2696e11234e8f9c6bbd61ddde1d6e8be6",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p232_012",
+      "filename": "dns48_finetuned.wav",
+      "relative_path": "audio/p232_012/dns48_finetuned.wav",
+      "size_bytes": 138786,
+      "sha256": "dbd4569f8d1ca1add5cc2119d7e50bed0ea76bdd5bc4ae9e6a8f59b9046ddc58",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_014",
+      "filename": "clean.wav",
+      "relative_path": "audio/p257_014/clean.wav",
+      "size_bytes": 118204,
+      "sha256": "4ff11339edf8f2bb434b464d753e2b0651054a6040a2d54ece9db0973826b807",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_014",
+      "filename": "noisy.wav",
+      "relative_path": "audio/p257_014/noisy.wav",
+      "size_bytes": 118204,
+      "sha256": "3bf46bd5fd13448da80b83f26b465e622f43c748f6946b39639139c22d61be40",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_014",
+      "filename": "spectral_gating.wav",
+      "relative_path": "audio/p257_014/spectral_gating.wav",
+      "size_bytes": 118204,
+      "sha256": "0fb199e62cf98aaf84a70da32a8492a03ad5575d990042b0d725554c4bd67b26",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_014",
+      "filename": "dns48_zeroshot.wav",
+      "relative_path": "audio/p257_014/dns48_zeroshot.wav",
+      "size_bytes": 118204,
+      "sha256": "abb5af9809872663b92aebea15bc1950949dd04cf8369e7262d672451efdf3ae",
+      "verified_identical": true
+    },
+    {
+      "utterance_id": "p257_014",
+      "filename": "dns48_finetuned.wav",
+      "relative_path": "audio/p257_014/dns48_finetuned.wav",
+      "size_bytes": 118204,
+      "sha256": "58a183e20082e5c4b6b0a40aad84a05b732f143760e458d34bfef3f4da470311",
+      "verified_identical": true
+    }
+  ]
+}

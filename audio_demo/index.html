@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speech Enhancement Using Deep Learning — Offline Interactive Audio Demo</title>
+  <style>
+    /* ==========================================================================
+       Academic Modern Theme (100% Offline, Zero External Dependencies)
+       ========================================================================== */
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-elevated: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --border-color: #cbd5e1;
+      --border-focus: #3b82f6;
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --warning: #b45309;
+      --warning-bg: #fef3c7;
+      --danger: #b91c1c;
+      --danger-bg: #fee2e2;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 24px 16px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    /* Header & Intro Section */
+    .header-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .header-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      max-width: 900px;
+    }
+
+    .meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 9999px;
+      border: 1px solid transparent;
+      letter-spacing: 0.01em;
+    }
+
+    .badge-primary { background: var(--primary-light); color: var(--primary-dark); border-color: #bae6fd; }
+    .badge-success { background: var(--success-bg); color: var(--success); border-color: #bbf7d0; }
+    .badge-warning { background: var(--warning-bg); color: var(--warning); border-color: #fde68a; }
+    .badge-neutral { background: var(--bg-elevated); color: var(--text-muted); border-color: var(--border-color); }
+    .badge-danger  { background: var(--danger-bg); color: var(--danger); border-color: #fecaca; }
+
+    /* Utterance Selection Section */
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 28px 0 14px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .utterance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .utterance-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .utterance-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .utterance-card.active {
+      border-color: var(--primary);
+      background: #f0f9ff;
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+    }
+
+    .utterance-card .utt-id {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .utterance-card .utt-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .utterance-card .utt-stats {
+      font-size: 12px;
+      color: var(--text-subtle);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Active Utterance Metadata Panel */
+    .active-metadata-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 32px;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-subtle);
+    }
+
+    .meta-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* A/B Comparison Controller Toolbar */
+    .ab-toolbar {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .ab-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ab-select-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .ab-select-group select {
+      background: #334155;
+      color: #ffffff;
+      border: 1px solid #475569;
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .btn-primary { background: #0284c7; color: #ffffff; }
+    .btn-primary:hover { background: #0369a1; }
+    .btn-light { background: #e2e8f0; color: #0f172a; }
+    .btn-light:hover { background: #cbd5e1; }
+    .btn-toggle {
+      background: #38bdf8;
+      color: #0c4a6e;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 8px 20px;
+    }
+    .btn-toggle:hover { background: #7dd3fc; }
+
+    .ab-status-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .active-chip {
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: #0284c7;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    /* 5 Audio Player Cards Grid */
+    .players-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .player-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .player-card.active-playback {
+      border-color: #0284c7;
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25);
+    }
+
+    .player-card.highlight-finetuned {
+      border-left: 6px solid #16a34a;
+    }
+    .player-card.highlight-clean {
+      border-left: 6px solid #0284c7;
+    }
+    .player-card.highlight-noisy {
+      border-left: 6px solid #dc2626;
+    }
+    .player-card.highlight-baseline {
+      border-left: 6px solid #d97706;
+    }
+
+    .player-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .player-title-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .player-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .player-role-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .role-target { background: #e0f2fe; color: #0369a1; }
+    .role-input { background: #fee2e2; color: #b91c1c; }
+    .role-baseline { background: #fef3c7; color: #b45309; }
+    .role-model { background: #dcfce7; color: #15803d; }
+
+    .metrics-pills {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .metric-pill {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .metric-pill span {
+      color: var(--text-subtle);
+      font-weight: 500;
+      font-size: 11px;
+      margin-right: 4px;
+    }
+
+    .metric-pill.gain {
+      background: #dcfce7;
+      border-color: #86efac;
+      color: #15803d;
+    }
+
+    .player-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .player-controls-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-elevated);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid #e2e8f0;
+    }
+
+    .player-controls-row audio {
+      flex: 1;
+      height: 36px;
+      outline: none;
+    }
+
+    .file-path-tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      color: var(--text-subtle);
+      margin-top: 8px;
+      display: block;
+    }
+
+    .audio-error-banner {
+      display: none;
+      background: var(--danger-bg);
+      border: 1px solid #fca5a5;
+      color: var(--danger);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    /* Aggregate Results Section */
+    .benchmark-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-top: 36px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: var(--bg-elevated);
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    tr:hover {
+      background: #f8fafc;
+    }
+
+    .stat-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .stat-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .stat-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+    }
+
+    .stat-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      font-size: 12px;
+      color: var(--text-subtle);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ====================================================================
+       SECTION A: Project Header & Academic Context
+       ==================================================================== -->
+  <header class="header-card">
+    <h1 class="header-title">Speech Enhancement Using Deep Learning</h1>
+    <p class="header-subtitle">
+      Interactive offline demonstration comparing the project's fine-tuned model against competitive baselines across four representative test utterances from the official <strong>University of Edinburgh Noisy Speech Database (VoiceBank-DEMAND, DOI: 10.7488/ds/2117)</strong> test set.
+    </p>
+
+    <div class="meta-badges">
+      <span class="badge badge-success">Project Model: Demucs DNS48 Fine-Tuned (Epoch 14)</span>
+      <span class="badge badge-primary">Dataset: VoiceBank-DEMAND (16 kHz PCM Mono)</span>
+      <span class="badge badge-neutral">Speakers: p232 (Male) & p257 (Female)</span>
+      <span class="badge badge-neutral">Noise: 5 Unseen DEMAND Environments</span>
+      <span class="badge badge-neutral">100% Offline (Local Browser Demo)</span>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       SECTION B: Utterance Selection (4 Representative Examples)
+       ==================================================================== -->
+  <h2 class="section-title">1. Select Test Utterance</h2>
+  <div class="utterance-grid" id="utteranceSelectorGrid">
+    <!-- Rendered dynamically by JS -->
+  </div>
+
+  <!-- Active Utterance Metadata Panel -->
+  <div class="active-metadata-panel" id="activeMetadataPanel">
+    <!-- Populated dynamically -->
+  </div>
+
+  <!-- ====================================================================
+       SECTION D: A/B Comparison Toolbar Controller
+       ==================================================================== -->
+  <div class="ab-toolbar">
+    <div class="ab-controls">
+      <div class="ab-select-group">
+        <label for="selectCondA">Condition A:</label>
+        <select id="selectCondA">
+          <option value="noisy">Noisy Input</option>
+          <option value="clean">Clean Reference</option>
+          <option value="spectral_gating">Spectral Gating</option>
+          <option value="dns48_zeroshot">DNS48 Zero-Shot</option>
+          <option value="dns48_finetuned">DNS48 Fine-Tuned</option>
+        </select>
+      </div>
+
+      <div class="ab-select-group">
+        <label for="selectCondB">Condition B:</label>
+        <select id="selectCondB">
+          <option value="dns48_finetuned" selected>DNS48 Fine-Tuned</option>
+          <option value="dns48_zeroshot">DNS48 Zero-Shot</option>
+          <option value="noisy">Noisy Input</option>
+          <option value="clean">Clean Reference</option>
+          <option value="spectral_gating">Spectral Gating</option>
+        </select>
+      </div>
+
+      <button class="btn btn-toggle" id="btnToggleAB" title="Switch seamlessly between Condition A and B preserving current playback timestamp">
+        Switch A ↔ B
+      </button>
+
+      <button class="btn btn-light" id="btnPlayPauseAB">Play / Pause</button>
+      <button class="btn btn-light" id="btnRestartAB">Restart (0:00)</button>
+    </div>
+
+    <div class="ab-status-box">
+      <span>Now Playing:</span>
+      <span class="active-chip" id="abActiveChip">None (Paused)</span>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       SECTION C: Five Audio Comparison Cards
+       ==================================================================== -->
+  <h2 class="section-title">2. Audio Comparison (5 Conditions)</h2>
+  <div class="players-grid" id="playersGrid">
+    <!-- 5 Player Cards rendered dynamically -->
+  </div>
+
+  <!-- ====================================================================
+       SECTION E: Technical Information & Official Aggregate Benchmark Results (N = 824)
+       ==================================================================== -->
+  <section class="benchmark-section">
+    <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">3. Verified Aggregate Test-Set Results (N = 824 Utterances)</h2>
+    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+      The metrics displayed above in the audio player cards represent single-utterance evaluations for the selected audio file. Below are the verified, peer-reviewed <strong>aggregate benchmark metrics across all 824 test utterances</strong> from the official VoiceBank-DEMAND test set (unseen speakers p232 and p257, 5 unseen noise types, 4 SNR levels).
+    </p>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Condition / Method</th>
+            <th>Role</th>
+            <th>Wideband PESQ (Mean ± Std)</th>
+            <th>PESQ Median</th>
+            <th>STOI (Mean ± Std)</th>
+            <th>STOI Median</th>
+            <th>ΔPESQ vs Noisy</th>
+            <th>ΔPESQ vs Zero-Shot</th>
+            <th>Success Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Noisy Input</strong></td>
+            <td><span class="badge badge-danger">Unprocessed</span></td>
+            <td>1.9719 ± 0.7532</td>
+            <td>1.7986</td>
+            <td>0.9211 ± 0.0709</td>
+            <td>0.9403</td>
+            <td>—</td>
+            <td>-0.5484 (-21.8%)</td>
+            <td>824 / 824 (100%)</td>
+          </tr>
+          <tr>
+            <td><strong>Stationary Spectral Gating</strong></td>
+            <td><span class="badge badge-warning">DSP Baseline</span></td>
+            <td>1.4232 ± 0.2848</td>
+            <td>1.3502</td>
+            <td>0.8234 ± 0.0655</td>
+            <td>0.8320</td>
+            <td>-0.5487 (-27.8%)</td>
+            <td>-1.0971 (-43.5%)</td>
+            <td>824 / 824 (100%)</td>
+          </tr>
+          <tr>
+            <td><strong>Demucs DNS48 Zero-Shot</strong></td>
+            <td><span class="badge badge-primary">Pretrained</span></td>
+            <td>2.5203 ± 0.6258</td>
+            <td>2.5263</td>
+            <td>0.9300 ± 0.0638</td>
+            <td>0.9476</td>
+            <td>+0.5484 (+27.8%)</td>
+            <td>—</td>
+            <td>824 / 824 (100%)</td>
+          </tr>
+          <tr style="background: #f0fdf4; font-weight: 600;">
+            <td><strong>Demucs DNS48 Fine-Tuned (Epoch 14)</strong></td>
+            <td><span class="badge badge-success">Project Model</span></td>
+            <td><strong>2.9180 ± 0.6483</strong></td>
+            <td><strong>3.0316</strong></td>
+            <td><strong>0.9480 ± 0.0507</strong></td>
+            <td><strong>0.9645</strong></td>
+            <td><strong>+0.9461 (+48.0%)</strong></td>
+            <td><strong>+0.3977 (+15.8%)</strong></td>
+            <td><strong>824 / 824 (100%)</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 700; margin: 24px 0 12px 0;">Statistical Hypothesis Testing Summary (Phase 4D Confirmatory Analysis)</h3>
+    <p style="font-size: 13px; color: #475569; margin: 0 0 12px 0;">Aggregate test-set statistics over all N = 824 paired official test utterances (DNS48 Fine-Tuned vs. DNS48 Zero-Shot). These values are not computed from the 4 demonstration samples above.</p>
+    <div class="stat-card-grid">
+      <div class="stat-card">
+        <h4>Co-Primary Hypothesis 1 (PESQ)</h4>
+        <p>
+          <strong>H1 (PESQ Fine-Tuned > Zero-Shot):</strong><br>
+          Primary Sign Test: <strong>748/824 wins (90.78%)</strong>, <em>p</em><sub>Holm</sub> = <strong>2.42 × 10⁻¹³⁹</strong><br>
+          Wilcoxon <em>Z</em> = 22.12, <em>p</em><sub>Holm</sub> = <strong>3.73 × 10⁻¹⁰⁸</strong> (HL shift: <strong>+0.4036</strong>, 95% CI: [+0.3822, +0.4248])<br>
+          Mean gain: <strong>+0.3977</strong> (95% CI: [+0.3735, +0.4214]), <em>t</em>(823) = 32.24, <em>p</em><sub>Holm</sub> = 8.55 × 10⁻¹⁴⁸<br>
+          Effect sizes: <em>r</em><sub>rb</sub> = <strong>+0.8897</strong>, Cohen's <em>d_z</em> = <strong>1.1231</strong> (Large)
+        </p>
+      </div>
+
+      <div class="stat-card">
+        <h4>Co-Primary Hypothesis 2 (STOI)</h4>
+        <p>
+          <strong>H2 (STOI Fine-Tuned > Zero-Shot):</strong><br>
+          Primary Sign Test: <strong>669/824 wins (81.19%)</strong>, <em>p</em><sub>Holm</sub> = <strong>3.72 × 10⁻⁸¹</strong><br>
+          Wilcoxon <em>Z</em> = 19.01, <em>p</em><sub>Holm</sub> = <strong>1.37 × 10⁻⁸⁰</strong> (HL shift: <strong>+0.0136</strong>, 95% CI: [+0.0117, +0.0155])<br>
+          Mean gain: <strong>+0.0179</strong> (95% CI: [+0.0161, +0.0198]), <em>t</em>(823) = 18.54, <em>p</em><sub>Holm</sub> = 2.24 × 10⁻⁶⁴<br>
+          Effect sizes: <em>r</em><sub>rb</sub> = <strong>+0.7692</strong>, Cohen's <em>d_z</em> = <strong>0.6458</strong> (Medium-to-large)
+        </p>
+      </div>
+
+      <div class="stat-card">
+        <h4>Dataset & Implementation Specs</h4>
+        <p>
+          <strong>Sampling Rate:</strong> 16,000 Hz, 16-bit PCM Mono WAV<br>
+          <strong>Model:</strong> Causal Demucs DNS48 (waveform U-Net + LSTM bottleneck, hidden=48)<br>
+          <strong>Loss Function:</strong> Multi-Resolution STFT (3 resolutions) + L1 loss<br>
+          <strong>Demo Files:</strong> 20 WAV files, 3,741,710 total bytes, verified SHA-256 byte-for-byte identical to source evaluation outputs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Academic Speech Enhancement Research Project &bull; VoiceBank-DEMAND Dataset &bull; Facebook Research Demucs dns48 &bull; 100% Offline Local Demonstration</p>
+  </footer>
+
+</div>
+
+<!-- ====================================================================
+     Vanilla JavaScript Logic (100% Offline, Zero Fetch/AJAX, Local File Safe)
+     ==================================================================== -->
+<script>
+  // Verified Per-Utterance Data from results/final_test_comparison.json
+  const UTTERANCE_DATA = {
+    "p232_023": {
+      id: "p232_023",
+      speaker: "p232 (Male)",
+      speakerId: "p232",
+      noiseType: "psquare (Public Square)",
+      noiseKey: "psquare",
+      snrDb: 2.5,
+      durationExact: "9.7689s",
+      samples: "156,302 samples",
+      fileSize: "312,648 bytes",
+      description: "Severe noise degradation in an open public square with ambient babble and footsteps.",
+      metrics: {
+        clean: { pesq: "Reference Target", stoi: "1.0000", deltaPesqVsZs: "—", deltaPesqVsNoisy: "—" },
+        noisy: { pesq: "1.3108", stoi: "0.9366", deltaPesqVsZs: "-0.9518", deltaPesqVsNoisy: "0.0000" },
+        spectral_gating: { pesq: "1.1323", stoi: "0.8165", deltaPesqVsZs: "-1.1303", deltaPesqVsNoisy: "-0.1785" },
+        dns48_zeroshot: { pesq: "2.2626", stoi: "0.9671", deltaPesqVsZs: "0.0000", deltaPesqVsNoisy: "+0.9518" },
+        dns48_finetuned: { pesq: "2.5008", stoi: "0.9675", deltaPesqVsZs: "+0.2382", deltaPesqVsNoisy: "+1.1900" }
+      }
+    },
+    "p257_008": {
+      id: "p257_008",
+      speaker: "p257 (Female)",
+      speakerId: "p257",
+      noiseType: "cafe (Cafeteria)",
+      noiseKey: "cafe",
+      snrDb: 7.5,
+      durationExact: "5.5831s",
+      samples: "89,330 samples",
+      fileSize: "178,704 bytes",
+      description: "Moderate cafeteria chatter, clattering utensils, and non-stationary background noise.",
+      metrics: {
+        clean: { pesq: "Reference Target", stoi: "1.0000", deltaPesqVsZs: "—", deltaPesqVsNoisy: "—" },
+        noisy: { pesq: "1.2496", stoi: "0.9045", deltaPesqVsZs: "-0.6555", deltaPesqVsNoisy: "0.0000" },
+        spectral_gating: { pesq: "1.0906", stoi: "0.7877", deltaPesqVsZs: "-0.8145", deltaPesqVsNoisy: "-0.1590" },
+        dns48_zeroshot: { pesq: "1.9051", stoi: "0.9325", deltaPesqVsZs: "0.0000", deltaPesqVsNoisy: "+0.6555" },
+        dns48_finetuned: { pesq: "2.2039", stoi: "0.9531", deltaPesqVsZs: "+0.2988", deltaPesqVsNoisy: "+0.9543" }
+      }
+    },
+    "p232_012": {
+      id: "p232_012",
+      speaker: "p232 (Male)",
+      speakerId: "p232",
+      noiseType: "living (Living Room)",
+      noiseKey: "living",
+      snrDb: 12.5,
+      durationExact: "4.3357s",
+      samples: "69,371 samples",
+      fileSize: "138,786 bytes",
+      description: "Domestic living room acoustic reflections and subtle low-frequency HVAC hum.",
+      metrics: {
+        clean: { pesq: "Reference Target", stoi: "1.0000", deltaPesqVsZs: "—", deltaPesqVsNoisy: "—" },
+        noisy: { pesq: "2.0530", stoi: "0.9654", deltaPesqVsZs: "-0.6551", deltaPesqVsNoisy: "0.0000" },
+        spectral_gating: { pesq: "1.1952", stoi: "0.8279", deltaPesqVsZs: "-1.5129", deltaPesqVsNoisy: "-0.8578" },
+        dns48_zeroshot: { pesq: "2.7081", stoi: "0.9648", deltaPesqVsZs: "0.0000", deltaPesqVsNoisy: "+0.6551" },
+        dns48_finetuned: { pesq: "3.1346", stoi: "0.9739", deltaPesqVsZs: "+0.4265", deltaPesqVsNoisy: "+1.0816" }
+      }
+    },
+    "p257_014": {
+      id: "p257_014",
+      speaker: "p257 (Female)",
+      speakerId: "p257",
+      noiseType: "office (Office)",
+      noiseKey: "office",
+      snrDb: 17.5,
+      durationExact: "3.6925s",
+      samples: "59,080 samples",
+      fileSize: "118,204 bytes",
+      description: "High SNR office noise with subtle keyboard tapping and air ventilation.",
+      metrics: {
+        clean: { pesq: "Reference Target", stoi: "1.0000", deltaPesqVsZs: "—", deltaPesqVsNoisy: "—" },
+        noisy: { pesq: "3.3299", stoi: "0.9944", deltaPesqVsZs: "-0.0857", deltaPesqVsNoisy: "0.0000" },
+        spectral_gating: { pesq: "1.1785", stoi: "0.8065", deltaPesqVsZs: "-2.2371", deltaPesqVsNoisy: "-2.1514" },
+        dns48_zeroshot: { pesq: "3.4156", stoi: "0.9950", deltaPesqVsZs: "0.0000", deltaPesqVsNoisy: "+0.0857" },
+        dns48_finetuned: { pesq: "3.7012", stoi: "0.9961", deltaPesqVsZs: "+0.2856", deltaPesqVsNoisy: "+0.3713" }
+      }
+    }
+  };
+
+  const CONDITIONS = [
+    {
+      key: "clean",
+      name: "1. Clean Speech Reference",
+      file: "clean.wav",
+      role: "Ground-Truth Target",
+      roleClass: "role-target",
+      highlightClass: "highlight-clean",
+      desc: "Original unprocessed clean speech signal recorded in an anechoic studio chamber. Serves as the ground-truth reference target for perceptual evaluation (PESQ) and intelligibility (STOI)."
+    },
+    {
+      key: "noisy",
+      name: "2. Noisy Input Mixture",
+      file: "noisy.wav",
+      role: "Degraded Input",
+      roleClass: "role-input",
+      highlightClass: "highlight-noisy",
+      desc: "Clean speech corrupted with additive background noise from the DEMAND database at the designated input SNR. Fed directly into the enhancement pipelines."
+    },
+    {
+      key: "spectral_gating",
+      name: "3. Stationary Spectral Gating",
+      file: "spectral_gating.wav",
+      role: "DSP Baseline",
+      roleClass: "role-baseline",
+      highlightClass: "highlight-baseline",
+      desc: "Traditional digital signal processing (DSP) baseline using noisereduce (v3.0.2). Estimates stationary noise floor and attenuates background bands; prone to musical noise artifacts."
+    },
+    {
+      key: "dns48_zeroshot",
+      name: "4. Demucs DNS48 (Zero-Shot)",
+      file: "dns48_zeroshot.wav",
+      role: "Pretrained Deep Learning",
+      roleClass: "role-baseline",
+      highlightClass: "highlight-baseline",
+      desc: "Pretrained causal Demucs dns48 architecture (Facebook Research) evaluated directly without domain adaptation on VoiceBank-DEMAND."
+    },
+    {
+      key: "dns48_finetuned",
+      name: "5. Demucs DNS48 (Fine-Tuned)",
+      file: "dns48_finetuned.wav",
+      role: "Project's Trained Model",
+      roleClass: "role-model",
+      highlightClass: "highlight-finetuned",
+      desc: "The project's trained model checkpoint (Epoch 14, best_val_pesq.th) fine-tuned on VoiceBank-DEMAND with combined time-domain L1 and multi-resolution STFT loss."
+    }
+  ];
+
+  let currentUtteranceId = "p232_023";
+  let activeAudioElement = null;
+  let abActiveKey = null; // "A" or "B"
+  let isAbPlaying = false;
+
+  // Initialize DOM on Load
+  document.addEventListener("DOMContentLoaded", () => {
+    renderUtteranceSelector();
+    updateActiveMetadataPanel();
+    renderPlayerCards();
+    setupABToolbar();
+  });
+
+  // Render 4 Utterance Selection Cards
+  function renderUtteranceSelector() {
+    const grid = document.getElementById("utteranceSelectorGrid");
+    grid.innerHTML = "";
+
+    Object.keys(UTTERANCE_DATA).forEach((uttId) => {
+      const u = UTTERANCE_DATA[uttId];
+      const card = document.createElement("div");
+      card.className = "utterance-card" + (uttId === currentUtteranceId ? " active" : "");
+      card.onclick = () => selectUtterance(uttId);
+
+      card.innerHTML = `
+        <div class="utt-id">
+          <span>${u.id}</span>
+          <span class="badge ${u.snrDb <= 5 ? 'badge-danger' : (u.snrDb <= 10 ? 'badge-warning' : 'badge-primary')}">${u.snrDb} dB SNR</span>
+        </div>
+        <div class="utt-desc"><strong>${u.speaker}</strong> &bull; ${u.noiseType}</div>
+        <div class="utt-stats">
+          <span>Duration: ${u.durationExact}</span>
+          <span>Size: ${u.fileSize}</span>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // Switch Selected Utterance
+  function selectUtterance(uttId) {
+    if (uttId === currentUtteranceId) return;
+
+    // Stop any active audio
+    pauseAllAudio();
+    currentUtteranceId = uttId;
+
+    // Update active class on cards
+    document.querySelectorAll(".utterance-card").forEach((card, idx) => {
+      const id = Object.keys(UTTERANCE_DATA)[idx];
+      if (id === currentUtteranceId) {
+        card.classList.add("active");
+      } else {
+        card.classList.remove("active");
+      }
+    });
+
+    updateActiveMetadataPanel();
+    renderPlayerCards();
+    resetABState();
+  }
+
+  // Update Metadata Summary Panel
+  function updateActiveMetadataPanel() {
+    const u = UTTERANCE_DATA[currentUtteranceId];
+    const panel = document.getElementById("activeMetadataPanel");
+    panel.innerHTML = `
+      <div class="meta-item">
+        <span class="meta-label">Selected Utterance</span>
+        <span class="meta-value" style="color: var(--primary);">${u.id}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Speaker</span>
+        <span class="meta-value">${u.speaker}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Unseen Noise Type</span>
+        <span class="meta-value">${u.noiseType}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Input SNR</span>
+        <span class="meta-value">${u.snrDb} dB</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Duration</span>
+        <span class="meta-value">${u.durationExact} (${u.samples})</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Audio Format</span>
+        <span class="meta-value">16 kHz 16-bit PCM Mono</span>
+      </div>
+    `;
+  }
+
+  // Render 5 Audio Player Cards
+  function renderPlayerCards() {
+    const container = document.getElementById("playersGrid");
+    container.innerHTML = "";
+    const u = UTTERANCE_DATA[currentUtteranceId];
+
+    CONDITIONS.forEach((cond) => {
+      const m = u.metrics[cond.key];
+      const audioPath = `audio/${u.id}/${cond.file}`;
+
+      const card = document.createElement("div");
+      card.className = `player-card ${cond.highlightClass}`;
+      card.id = `card_${cond.key}`;
+
+      const isFinetuned = cond.key === "dns48_finetuned";
+      const isClean = cond.key === "clean";
+
+      let metricHtml = "";
+      if (isClean) {
+        metricHtml = `
+          <div class="metrics-pills">
+            <div class="metric-pill"><span>Target</span>Reference Target</div>
+          </div>
+        `;
+      } else {
+        const gainBadge = isFinetuned && parseFloat(m.deltaPesqVsZs) > 0 ? "gain" : "";
+        metricHtml = `
+          <div class="metrics-pills">
+            <div class="metric-pill"><span>PESQ</span>${m.pesq}</div>
+            <div class="metric-pill"><span>STOI</span>${m.stoi}</div>
+            ${!isClean ? `<div class="metric-pill ${gainBadge}"><span>vs ZS</span>${m.deltaPesqVsZs}</div>` : ""}
+            ${!isClean ? `<div class="metric-pill"><span>vs Noisy</span>${m.deltaPesqVsNoisy}</div>` : ""}
+          </div>
+        `;
+      }
+
+      card.innerHTML = `
+        <div class="player-header">
+          <div class="player-title-box">
+            <span class="player-name">${cond.name}</span>
+            <span class="player-role-badge ${cond.roleClass}">${cond.role}</span>
+          </div>
+          ${metricHtml}
+        </div>
+        <p class="player-desc">${cond.desc}</p>
+        <div class="player-controls-row">
+          <button class="btn btn-primary" id="btnPlay_${cond.key}" onclick="togglePlayCondition('${cond.key}')">Play</button>
+          <audio id="audio_${cond.key}" preload="metadata" controls src="${audioPath}">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <span class="file-path-tag">Relative Path: ${audioPath}</span>
+        <div class="audio-error-banner" id="err_${cond.key}">
+          Error loading audio file at ${audioPath}. Please verify that the audio folder was extracted properly alongside index.html.
+        </div>
+      `;
+
+      container.appendChild(card);
+
+      // Attach audio event listeners
+      const audioEl = card.querySelector("audio");
+      audioEl.addEventListener("play", () => onAudioPlayStarted(cond.key));
+      audioEl.addEventListener("pause", () => onAudioPaused(cond.key));
+      audioEl.addEventListener("ended", () => onAudioEnded(cond.key));
+      audioEl.addEventListener("error", () => onAudioError(cond.key));
+    });
+  }
+
+  // Handle Play Event
+  function onAudioPlayStarted(key) {
+    const audioEl = document.getElementById(`audio_${key}`);
+    activeAudioElement = audioEl;
+
+    // Mutual exclusion: pause all other audio elements
+    CONDITIONS.forEach((c) => {
+      if (c.key !== key) {
+        const otherAudio = document.getElementById(`audio_${c.key}`);
+        if (otherAudio && !otherAudio.paused) {
+          otherAudio.pause();
+        }
+      }
+    });
+
+    // Update UI
+    document.querySelectorAll(".player-card").forEach((c) => c.classList.remove("active-playback"));
+    const activeCard = document.getElementById(`card_${key}`);
+    if (activeCard) activeCard.classList.add("active-playback");
+
+    const btn = document.getElementById(`btnPlay_${key}`);
+    if (btn) btn.textContent = "Pause";
+
+    // Update A/B toolbar chip if this matches A or B
+    updateABStatusDisplay(key);
+  }
+
+  function onAudioPaused(key) {
+    const btn = document.getElementById(`btnPlay_${key}`);
+    if (btn) btn.textContent = "Play";
+    const card = document.getElementById(`card_${key}`);
+    if (card && activeAudioElement && activeAudioElement.id === `audio_${key}`) {
+      card.classList.remove("active-playback");
+    }
+  }
+
+  function onAudioEnded(key) {
+    const btn = document.getElementById(`btnPlay_${key}`);
+    if (btn) btn.textContent = "Play";
+    const card = document.getElementById(`card_${key}`);
+    if (card) card.classList.remove("active-playback");
+    activeAudioElement = null;
+    isAbPlaying = false;
+    document.getElementById("abActiveChip").textContent = "None (Finished)";
+  }
+
+  function onAudioError(key) {
+    console.error(`Audio error encountered on condition: ${key}`);
+    const banner = document.getElementById(`err_${key}`);
+    if (banner) banner.style.display = "block";
+  }
+
+  function togglePlayCondition(key) {
+    const audioEl = document.getElementById(`audio_${key}`);
+    if (!audioEl) return;
+
+    if (audioEl.paused) {
+      audioEl.play().catch((err) => {
+        console.warn("Playback prevented by browser policy:", err);
+      });
+    } else {
+      audioEl.pause();
+    }
+  }
+
+  function pauseAllAudio() {
+    CONDITIONS.forEach((c) => {
+      const a = document.getElementById(`audio_${c.key}`);
+      if (a && !a.paused) {
+        a.pause();
+      }
+    });
+    activeAudioElement = null;
+    isAbPlaying = false;
+  }
+
+  // ====================================================================
+  // A/B Comparison Controller Logic
+  // ====================================================================
+  function setupABToolbar() {
+    const btnToggle = document.getElementById("btnToggleAB");
+    const btnPlayPause = document.getElementById("btnPlayPauseAB");
+    const btnRestart = document.getElementById("btnRestartAB");
+
+    btnToggle.addEventListener("click", () => toggleABCondition());
+    btnPlayPause.addEventListener("click", () => togglePlayPauseAB());
+    btnRestart.addEventListener("click", () => restartAB());
+
+    document.getElementById("selectCondA").addEventListener("change", () => {
+      if (abActiveKey === "A" && isAbPlaying) {
+        switchABAudioTarget();
+      }
+    });
+
+    document.getElementById("selectCondB").addEventListener("change", () => {
+      if (abActiveKey === "B" && isAbPlaying) {
+        switchABAudioTarget();
+      }
+    });
+  }
+
+  function resetABState() {
+    abActiveKey = null;
+    isAbPlaying = false;
+    document.getElementById("abActiveChip").textContent = "None (Paused)";
+  }
+
+  function getConditionKeyFor(abSlot) {
+    return document.getElementById(abSlot === "A" ? "selectCondA" : "selectCondB").value;
+  }
+
+  function togglePlayPauseAB() {
+    if (!abActiveKey) {
+      abActiveKey = "A";
+    }
+
+    const targetKey = getConditionKeyFor(abActiveKey);
+    const audioEl = document.getElementById(`audio_${targetKey}`);
+    if (!audioEl) return;
+
+    if (audioEl.paused) {
+      isAbPlaying = true;
+      audioEl.play().catch(console.warn);
+    } else {
+      isAbPlaying = false;
+      audioEl.pause();
+    }
+  }
+
+  function toggleABCondition() {
+    // If not started, start A
+    if (!abActiveKey) {
+      abActiveKey = "A";
+    } else {
+      abActiveKey = abActiveKey === "A" ? "B" : "A";
+    }
+
+    switchABAudioTarget();
+  }
+
+  function switchABAudioTarget() {
+    let currentTime = 0;
+    let wasPlaying = false;
+
+    if (activeAudioElement) {
+      currentTime = activeAudioElement.currentTime;
+      wasPlaying = !activeAudioElement.paused;
+      activeAudioElement.pause();
+    }
+
+    const newTargetKey = getConditionKeyFor(abActiveKey);
+    const newAudioEl = document.getElementById(`audio_${newTargetKey}`);
+    if (!newAudioEl) return;
+
+    newAudioEl.currentTime = currentTime;
+
+    if (wasPlaying || isAbPlaying) {
+      isAbPlaying = true;
+      newAudioEl.play().catch(console.warn);
+    }
+
+    updateABStatusDisplay(newTargetKey);
+  }
+
+  function restartAB() {
+    if (!abActiveKey) abActiveKey = "A";
+    const targetKey = getConditionKeyFor(abActiveKey);
+    const audioEl = document.getElementById(`audio_${targetKey}`);
+    if (!audioEl) return;
+
+    audioEl.currentTime = 0;
+    isAbPlaying = true;
+    audioEl.play().catch(console.warn);
+    updateABStatusDisplay(targetKey);
+  }
+
+  function updateABStatusDisplay(currentKey) {
+    const chip = document.getElementById("abActiveChip");
+    const condA = getConditionKeyFor("A");
+    const condB = getConditionKeyFor("B");
+
+    if (currentKey === condA) {
+      abActiveKey = "A";
+      chip.textContent = `Condition A (${getConditionName(condA)})`;
+      chip.style.background = "#0284c7";
+    } else if (currentKey === condB) {
+      abActiveKey = "B";
+      chip.textContent = `Condition B (${getConditionName(condB)})`;
+      chip.style.background = "#16a34a";
+    } else {
+      chip.textContent = `Individual Player (${getConditionName(currentKey)})`;
+      chip.style.background = "#475569";
+    }
+  }
+
+  function getConditionName(key) {
+    const c = CONDITIONS.find((item) => item.key === key);
+    return c ? c.name.split(". ")[1] : key;
+  }
+</script>
+
+</body>
+</html>
